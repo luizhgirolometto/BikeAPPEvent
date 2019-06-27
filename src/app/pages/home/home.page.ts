@@ -14,15 +14,20 @@ export class HomePage implements OnInit {
   private loading: any;
   public products = new Array<Product>();
   private productsSubscription: Subscription;
+  private usuario : any;
 
   constructor(
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private productService: ProductService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+   
   ) {
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
+      // codigo do usuario logado
+     this.usuario = this.authService.getAuth().currentUser.uid;
+     console.log(this.usuario);
     });
   }
 

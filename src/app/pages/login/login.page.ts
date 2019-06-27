@@ -3,6 +3,7 @@ import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,13 +22,18 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    public keyboard: Keyboard
+    public keyboard: Keyboard,
+    private userService: UserService
+
   ) { }
 
   ngOnInit() { }
 
+  //controle do segment da tela de login
+
   segmentChanged(event: any) {
-    if (event.detail.value === 'login') {
+    console.log(event);
+    if (event.detail.value === "login") {
       this.slides.slidePrev();
       this.wavesPosition += this.wavesDifference;
     } else {
@@ -42,11 +48,29 @@ export class LoginPage implements OnInit {
     try {
       await this.authService.login(this.userLogin);
     } catch (error) {
-      this.presentToast(error.message);
+
+      let message: string;
+
+      switch (error.code) {
+        case 'auth/user-not-found':
+          message = 'Usuário não encontrado!!';
+          break;
+
+        case 'auth/wrong-password':
+          message = 'Senha inválida!!';
+          break;
+      }
+
+      console.error(error);
+      this.presentToast(message);
+
     } finally {
       this.loading.dismiss();
+      this.userService.addUser(this.userLogin);
     }
+
   }
+
 
   async register() {
     await this.presentLoading();
@@ -54,19 +78,44 @@ export class LoginPage implements OnInit {
     try {
       await this.authService.register(this.userRegister);
     } catch (error) {
-      this.presentToast(error.message);
+
+      let message: string;
+
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          message = 'E-mail já utilizado!!';
+          break;
+
+        case 'auth/invalid-email':
+          message = 'E-mail inválido!!';
+          break;
+      }
+
+      console.error(error);
+      this.presentToast(message);
+
     } finally {
       this.loading.dismiss();
+      this.userService.addUser(this.userRegister);
     }
+
   }
 
   async presentLoading() {
-    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    this.loading = await this.loadingCtrl.create({
+      message: 'Por favor, aguarde...',
+    });
+
     return this.loading.present();
+
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2000
+    });
     toast.present();
   }
+
 }
