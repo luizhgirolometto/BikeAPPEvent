@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
+  
 
   constructor(
     private authService: AuthService,
@@ -47,6 +48,8 @@ export class LoginPage implements OnInit {
 
     try {
       await this.authService.login(this.userLogin);
+      
+     
     } catch (error) {
 
       let message: string;
@@ -66,7 +69,7 @@ export class LoginPage implements OnInit {
 
     } finally {
       this.loading.dismiss();
-      this.userService.addUser(this.userLogin);
+    
     }
 
   }
@@ -77,6 +80,11 @@ export class LoginPage implements OnInit {
 
     try {
       await this.authService.register(this.userRegister);
+      
+      this.userRegister.userUid = this.authService.getAuth().currentUser.uid;
+      this.userService.addUser(this.userRegister);
+      
+      
     } catch (error) {
 
       let message: string;
@@ -89,6 +97,10 @@ export class LoginPage implements OnInit {
         case 'auth/invalid-email':
           message = 'E-mail inválido!!';
           break;
+
+          case 'auth/weak-password':
+            message = 'A senha deve ter pelo menos 6 caracteres!!'
+            break;
       }
 
       console.error(error);
@@ -96,7 +108,7 @@ export class LoginPage implements OnInit {
 
     } finally {
       this.loading.dismiss();
-      this.userService.addUser(this.userRegister);
+      
     }
 
   }
