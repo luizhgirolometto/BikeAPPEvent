@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Product } from 'src/app/interfaces/product';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
-import { Product } from 'src/app/interfaces/product';
-import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
 import { CitiesService } from 'src/app/services/cities.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-myposts',
+  templateUrl: './myposts.page.html',
+  styleUrls: ['./myposts.page.scss'],
 })
-export class HomePage implements OnInit {
+export class MypostsPage implements OnInit {
   private loading: any;
   public products = new Array<Product>();
+  public cities = new Array<Cities>();
   private productsSubscription: Subscription;
-
   private usuario : any;
-
+  private cidade: any;
+  
 
   constructor(
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private productService: ProductService,
     private toastCtrl: ToastController,
+    private CitiesService: CitiesService
    
   ) {
-      
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
-
       // codigo do usuario logado
      this.usuario = this.authService.getAuth().currentUser.uid;
-     console.log(this.usuario);
+     
+     this.cidade = this.CitiesService.getCities().subscribe(cidades => {
+        this.cities = cidades
+
+      console.log(this.cities);       
+      });
+
     });
   }
 
@@ -41,18 +47,6 @@ export class HomePage implements OnInit {
 
   ngOnDestroy() {
     this.productsSubscription.unsubscribe();
-  }
-
-  async logout() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.logout();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      this.loading.dismiss();
-    }
   }
 
   async presentLoading() {

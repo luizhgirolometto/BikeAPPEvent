@@ -13,6 +13,12 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { registerLocaleData } from '@angular/common';
+
+import localePt from '@angular/common/locales/pt-PT';
+
+registerLocaleData(localePt, 'pt-PT');
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +36,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Keyboard
+    
   ],
   bootstrap: [AppComponent]
 })

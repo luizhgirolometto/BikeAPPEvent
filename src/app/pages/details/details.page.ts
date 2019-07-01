@@ -5,6 +5,8 @@ import { Product } from 'src/app/interfaces/product';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
+import { Cities } from 'src/app/interfaces/cities';
+import { CitiesService } from 'src/app/services/cities.service';
 
 @Component({
   selector: 'app-details',
@@ -14,8 +16,11 @@ import { Subscription } from 'rxjs';
 export class DetailsPage implements OnInit {
   private productId: string = null;
   public product: Product = {};
+  public cities  = new Array<Cities>();
   private loading: any;
   private productSubscription: Subscription;
+  private city: any;
+  
 
   constructor(
     private productService: ProductService,
@@ -23,7 +28,9 @@ export class DetailsPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private citiesService: CitiesService
+
   ) {
     this.productId = this.activatedRoute.snapshot.params['id'];
 
@@ -37,8 +44,17 @@ export class DetailsPage implements OnInit {
   }
 
   loadProduct() {
+
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
+
+      this.city = this.citiesService.getCities().subscribe(cidades => {
+        this.cities = cidades
+        console.log(this.city);
+      });
+    
+    
+
     });
   }
 
