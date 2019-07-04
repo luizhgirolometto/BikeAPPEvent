@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import { Product } from '../interfaces/product';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   private productsCollection: AngularFirestoreCollection<Product>;
+  public comments$ : any;
+
 
   constructor(private afs: AngularFirestore) {
     this.productsCollection = this.afs.collection<Product>('Products');
+    this.afs.collection('Products').valueChanges().subscribe(val => console.log(val) );
   }
 
   getProducts() {
@@ -41,4 +45,10 @@ export class ProductService {
   deleteProduct(id: string) {
     return this.productsCollection.doc(id).delete();
   } 
-}
+ 
+  showproduct(userUid: string){
+    return this.afs.collection('products', ref => ref.where('userUid', '==', (userUid)));
+  }
+
+
+ }

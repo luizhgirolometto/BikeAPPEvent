@@ -18,7 +18,7 @@ export class MypostsPage implements OnInit {
   public cities = new Array<Cities>();
   private productsSubscription: Subscription;
   private usuario : any;
-  private cidade: any;
+ 
   
 
   constructor(
@@ -26,24 +26,25 @@ export class MypostsPage implements OnInit {
     private loadingCtrl: LoadingController,
     private productService: ProductService,
     private toastCtrl: ToastController,
-    private CitiesService: CitiesService
+    
    
   ) {
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
       // codigo do usuario logado
      this.usuario = this.authService.getAuth().currentUser.uid;
-     
-     this.cidade = this.CitiesService.getCities().subscribe(cidades => {
-        this.cities = cidades
-
-      console.log(this.cities);       
-      });
 
     });
+   
+    if(this.usuario) this.showproducts();
+
+  
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    
+    
+  }
 
   ngOnDestroy() {
     this.productsSubscription.unsubscribe();
@@ -66,4 +67,17 @@ export class MypostsPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
+
+   showproducts(userUid: string){
+    try {
+      let dados = this.productService.showproduct(this.usuario);
+      console.log(dados);
+    } catch (error) {
+      this.presentToast('Erro ao tentar achar usuario');
+    }
+  }
+
+  }
+
+  
 }

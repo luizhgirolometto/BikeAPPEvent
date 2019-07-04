@@ -32,7 +32,14 @@ export class DetailsPage implements OnInit {
     private citiesService: CitiesService
 
   ) {
+
     this.productId = this.activatedRoute.snapshot.params['id'];
+
+    console.log(this.productId);
+ 
+    this.city = this.citiesService.getCities().subscribe(cidades => {
+      this.cities = cidades
+    });
 
     if (this.productId) this.loadProduct();
   }
@@ -47,14 +54,6 @@ export class DetailsPage implements OnInit {
 
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
-
-      this.city = this.citiesService.getCities().subscribe(cidades => {
-        this.cities = cidades
-        console.log(this.city);
-      });
-    
-    
-
     });
   }
 
