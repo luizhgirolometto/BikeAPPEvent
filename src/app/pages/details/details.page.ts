@@ -35,7 +35,7 @@ export class DetailsPage implements OnInit {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
 
-    console.log(this.productId);
+    
  
     this.city = this.citiesService.getCities().subscribe(cidades => {
       this.cities = cidades
@@ -60,8 +60,7 @@ export class DetailsPage implements OnInit {
   async saveProduct() {
     await this.presentLoading();
 
-    this.product.userId = this.authService.getAuth().currentUser.uid;
-
+    
     if (this.productId) {
       try {
         await this.productService.updateProduct(this.productId, this.product);
@@ -74,7 +73,8 @@ export class DetailsPage implements OnInit {
       }
     } else {
       this.product.createdAt = new Date().getTime();
-
+      this.product.userId = this.authService.getAuth().currentUser.uid;
+      
       try {
         await this.productService.addProduct(this.product);
         await this.loading.dismiss();
