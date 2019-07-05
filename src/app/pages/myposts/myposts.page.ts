@@ -29,14 +29,12 @@ export class MypostsPage implements OnInit {
     
    
   ) {
-    this.productsSubscription = this.productService.getProducts().subscribe(data => {
+    this.productsSubscription = this.productService.getUserProducts().subscribe(data => {
       this.products = data;
-      // codigo do usuario logado
-     this.usuario = this.authService.getAuth().currentUser.uid;
 
+      console.log(this.products);
     });
    
-    if(this.usuario) this.showproducts();
 
   
   }
@@ -63,21 +61,9 @@ export class MypostsPage implements OnInit {
     }
   }
 
-  async presentToast(message: string) {
+    async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
-  }
-
-   showproducts(userUid: string){
-    try {
-      let dados = this.productService.showproduct(this.usuario);
-      console.log(dados);
-    } catch (error) {
-      this.presentToast('Erro ao tentar achar usuario');
-    }
-  }
+     }
 
   }
-
-  
-}

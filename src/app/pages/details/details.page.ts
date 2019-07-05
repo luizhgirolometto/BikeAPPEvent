@@ -6,7 +6,9 @@ import { NavController, LoadingController, ToastController } from '@ionic/angula
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
+import { User } from 'src/app/interfaces/user';
 import { CitiesService } from 'src/app/services/cities.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -17,9 +19,15 @@ export class DetailsPage implements OnInit {
   private productId: string = null;
   public product: Product = {};
   public cities  = new Array<Cities>();
-  private loading: any;
+  public user = new Array<User>();
+
+ 
   private productSubscription: Subscription;
+  private usersSubscription: Subscription;
+
+  private loading: any;
   private city: any;
+  private usuario: any;
   
 
   constructor(
@@ -29,17 +37,20 @@ export class DetailsPage implements OnInit {
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController,
-    private citiesService: CitiesService
+    private citiesService: CitiesService,
+    private userService: UserService,
 
   ) {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
 
-    console.log(this.productId);
- 
-    this.city = this.citiesService.getCities().subscribe(cidades => {
+      this.city = this.citiesService.getCities().subscribe(cidades => {
       this.cities = cidades
     });
+
+   
+
+
 
     if (this.productId) this.loadProduct();
   }
@@ -59,9 +70,11 @@ export class DetailsPage implements OnInit {
 
   async saveProduct() {
     await this.presentLoading();
+    this.usuario =  this.userService.getUserName().subscribe(usuario => {
+      this.user = usuario;
+        });
 
-    this.product.userId = this.authService.getAuth().currentUser.uid;
-
+    
     if (this.productId) {
       try {
         await this.productService.updateProduct(this.productId, this.product);
@@ -74,7 +87,9 @@ export class DetailsPage implements OnInit {
       }
     } else {
       this.product.createdAt = new Date().getTime();
-
+      this.product.userId = this.authService.getAuth().currentUser.uid;
+      this.product.nameUser = this.user[0].nome;
+      
       try {
         await this.productService.addProduct(this.product);
         await this.loading.dismiss();
