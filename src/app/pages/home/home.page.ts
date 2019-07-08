@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   private loading: any;
   public products = new Array<Product>();
   private productsSubscription: Subscription;
+
   private usuario : any;
 
 
@@ -29,8 +30,6 @@ export class HomePage implements OnInit {
       
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
-
-      console.log(this.products);
 
       // codigo do usuario logado
      this.usuario = this.authService.getAuth().currentUser.uid;
