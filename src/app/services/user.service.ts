@@ -12,27 +12,32 @@ export class UserService {
  
   constructor(private afu: AngularFirestore) {
     this.userCollection = this.afu.collection<User>('Users');
+
+ 
+  
   }
 
-getUsers() {
-  return this.userCollection.snapshotChanges().pipe(
-    map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
+  getUsers() {
+    return this.userCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
 
-        return { id, ...data };
-      });
-    })
-  );
-}
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
+  getUser(id: string) {
+    return this.userCollection.doc<User>(id).valueChanges();
+  }
+
 addUser(user: User) {
   return this.userCollection.add(user);
 }
 
-getUser(id: string) {
-  return this.userCollection.doc<User>(id).valueChanges();
-}
 
 updateUser(id: string, product: User) {
   return this.userCollection.doc<User>(id).update(product);
