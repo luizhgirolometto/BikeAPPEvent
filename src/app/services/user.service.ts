@@ -19,8 +19,8 @@ export class UserService {
     this.userCollection = this.afu.collection<User>('Users');
 
     //captura o usuario logado
-    this.usuario = this.authService.getAuth().currentUser.uid;
-    console.log(this.usuario);
+   // this.usuario = this.authService.getAuth().currentUser.uid;
+   // console.log(this.usuario);
   }
 
   getUsers() {
