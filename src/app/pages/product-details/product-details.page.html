@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+  
+      <ion-title>Detalhes do Evento</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="product.name" placeholder="Nome do Evento"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+          <ion-label>Modalidade</ion-label>
+            <ion-select [(ngModel)]="product.modalidade" okText="OK" cancelText="Cancelar">
+            <ion-select-option value="speed">Speed</ion-select-option>
+            <ion-select-option value="mtb">MTB</ion-select-option>
+            <ion-select-option value="misto">MTB + Speed</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+      <ion-item>
+          <ion-label>Nível</ion-label>
+          <ion-select [(ngModel)]="product.nivel" okText="OK" cancelText="Cancelar">
+            <ion-select-option  value="Iniciante">Iniciante</ion-select-option>
+            <ion-select-option  value="Amador">Amador</ion-select-option>
+            <ion-select-option  value="Experiente">Experiente</ion-select-option>
+            <ion-select-option  value="Galático">Galático</ion-select-option>
+          </ion-select>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Cidade</ion-label>
+        <ion-select  [(ngModel)]="product.cities"   okText="OK" cancelText="Cancelar">
+          <ion-select-option *ngFor="let citie of cities">{{citie.cidade}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+  
+      <ion-item>
+          <ion-label>Data/Hora</ion-label>
+          <ion-datetime displayFormat="D MMM YYYY H:mm" [(ngModel)]="product.dtEvent" placeholder="selecione"></ion-datetime>
+        </ion-item>
+  
+      <ion-item>
+          <ion-input type="text" [(ngModel)]="product.picture" placeholder="Foto"></ion-input>
+        </ion-item>
+      
+      <ion-item>
+          <ion-textarea  rows="6" cols="20" [(ngModel)]="product.description" placeholder="Descrição"></ion-textarea>
+      </ion-item>
+  
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button (click)="saveProduct()" expand="block">
+        Salvar produto
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>

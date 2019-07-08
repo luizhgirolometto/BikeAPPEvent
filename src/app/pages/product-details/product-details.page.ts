@@ -1,46 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Product } from 'src/app/interfaces/product';
-import { LoadingController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
-import { Cities } from 'src/app/interfaces/cities';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/interfaces/product';
+import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
-  selector: 'app-myposts',
-  templateUrl: './myposts.page.html',
-  styleUrls: ['./myposts.page.scss'],
+  selector: 'app-product-details',
+  templateUrl: './product-details.page.html',
+  styleUrls: ['./product-details.page.scss'],
 })
-export class MypostsPage implements OnInit {
+export class ProductDetailsPage implements OnInit {
   private loading: any;
   public products = new Array<Product>();
-  public cities = new Array<Cities>();
   private productsSubscription: Subscription;
 
+  private usuario : any;
 
- 
-  
 
   constructor(
-   
+    private authService: AuthService,
     private loadingCtrl: LoadingController,
     private productService: ProductService,
     private toastCtrl: ToastController,
-    
    
   ) {
-    this.productsSubscription = this.productService.getUserProducts().subscribe(data => {
+      
+    this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
 
-      console.log(this.products);
-      
+      // codigo do usuario logado
+     this.usuario = this.authService.getAuth().currentUser.uid;
+     console.log(this.usuario);
     });
   }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   ngOnDestroy() {
     this.productsSubscription.unsubscribe();
+  }
+
+  async logout() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.logout();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.loading.dismiss();
+    }
   }
 
   async presentLoading() {
@@ -60,7 +73,6 @@ export class MypostsPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
-
 }
 
-  
+
