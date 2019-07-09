@@ -1,7 +1,49 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Feed</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge color="dark" slot="end">2</ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+          <ion-item *ngFor="let usuario of usuarios" class="perfil" margin-bottom>
+            <ion-avatar slot="start" class="user-avatar">
+              <img src="assets/img/avatar.jpeg">
+            </ion-avatar>
+            <ion-label>
+              <ion-text class="nameUser">
+                <h1><strong>{{usuario.nome}}</strong></h1>
+              </ion-text>
+              <ion-text>
+                <h3>
+                  Pato Branco - PR
+                </h3>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+     
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  <ion-toolbar color="dark">
+    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+        <ion-icon name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  
 </ion-header>
 
 <ion-content>

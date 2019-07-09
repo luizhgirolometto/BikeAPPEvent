@@ -2,18 +2,35 @@ ion-avatar {
     --border-radius: 0;
 }
 ion-tab-bar{
-    --color: #FF9800;
+    --color: #ffc400;
 }
 
 ion-fab-button {
-    --background: #FF9800;
+    --background: #ffc400;
 }
 
 ion-toolbar{
-    --background: #FF9800;
-    --color: #fff;
+    --background: #ffc400;
+    --color: #2f32a0;
+}
+
+ion-grid{
+    background-color: #ffc400; 
 }
 
 .icones {
-    color: #fff;
+    color: #2f32a0;
+}
+
+.perfil {
+   --background: #ffc400;
+}
+
+ion-avatar {
+    --border-radius: 20px;
+}
+
+.nameUser{
+    text-size-adjust: 40px;
+
 }

@@ -10,7 +10,6 @@ import { AuthService } from './auth.service';
 })
 export class ProductService {
   private productsCollection: AngularFirestoreCollection<Product>;
-  public comments$ : any;
   public usuario: any;
 
 

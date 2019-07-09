@@ -4,8 +4,8 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
-import { Cities } from 'src/app/interfaces/cities';
-import { CitiesService } from 'src/app/services/cities.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +15,10 @@ import { CitiesService } from 'src/app/services/cities.service';
 export class HomePage implements OnInit {
   private loading: any;
   public products = new Array<Product>();
+  public usuarios = new Array<User>();
   private productsSubscription: Subscription;
-
-  private usuario : any;
+  private userSubscription: Subscription;
+  private usuario: any;
 
 
   constructor(
@@ -25,22 +26,26 @@ export class HomePage implements OnInit {
     private loadingCtrl: LoadingController,
     private productService: ProductService,
     private toastCtrl: ToastController,
-   
+    private userService: UserService,
+
   ) {
-      
+
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
-
-      // codigo do usuario logado
-     this.usuario = this.authService.getAuth().currentUser.uid;
-     console.log(this.usuario);
     });
+
+    this.userSubscription = this.userService.getNameUser().subscribe(usuario => {
+      this.usuarios = usuario;
+      console.log(this.usuarios);
+    })
+
   }
 
   ngOnInit() { }
 
   ngOnDestroy() {
     this.productsSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
   async logout() {
