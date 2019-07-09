@@ -20,6 +20,7 @@ ion-grid{
 
 .icones {
     color: #2f32a0;
+    font-size: 64px;
 }
 
 .perfil {
@@ -28,9 +29,11 @@ ion-grid{
 
 ion-avatar {
     --border-radius: 20px;
+       border-block-color: #fff;
 }
 
 .nameUser{
-    text-size-adjust: 40px;
+   color: #2f32a0;
 
 }
+

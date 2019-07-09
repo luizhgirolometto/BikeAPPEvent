@@ -15,7 +15,7 @@ export class UserService {
   constructor(private afu: AngularFirestore,
     private authService: AuthService,) {
     this.userCollection = this.afu.collection<User>('Users');
-    this.usuario = this.authService.getAuth().currentUser.uid;
+    
   }
 
 getUsers() {
@@ -48,7 +48,8 @@ deleteUser(id: string) {
 } 
 
 getNameUser() {
-  return  this.afu.collection('Users', ref => ref.where('userUid', '==', this.usuario)).snapshotChanges().pipe(
+  
+  return  this.afu.collection('Users', ref => ref.where('userUid', '==', this.usuario = this.authService.getAuth().currentUser.uid)).snapshotChanges().pipe(
     map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data();
