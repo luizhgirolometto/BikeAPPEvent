@@ -17,6 +17,10 @@ import { registerLocaleData } from '@angular/common';
 
 import localePt from '@angular/common/locales/pt-PT';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+
 registerLocaleData(localePt, 'pt-PT');
 
 
@@ -25,6 +29,9 @@ registerLocaleData(localePt, 'pt-PT');
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
