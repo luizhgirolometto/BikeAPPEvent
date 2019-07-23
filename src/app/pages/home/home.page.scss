@@ -1,5 +1,24 @@
+ion-toolbar{
+    --background: black;
+   
+}
+   
+
+.cabecalho {
+    --background: url('/assets/img/bg5.png') no-repeat bottom ;
+    --padding-top:80px;
+}
+
 ion-thumbnail {
-    --border-radius: 30px;
-    --size: 50px;
-    margin-left: 33%;
+    
+    --border-radius: 60px;
+    --size: 110px;
+    margin: auto;
+
+}
+
+ion-text {
+    margin: auto;
+    text-align: center;
+   
 }
