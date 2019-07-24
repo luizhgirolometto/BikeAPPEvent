@@ -1,39 +1,49 @@
-ion-avatar {
-    --border-radius: 0;
-}
-ion-tab-bar{
-    --color: #ffc400;
+@font-face {
+    font-family:OpenSans-Regular;
+    font-style: regular;
+    src: url("../../../assets/fonts/OpenSans/OpenSans-Regular/OpenSans-Regular.ttf");
+    }
+
+ @font-face {
+    font-family:OpenSans-Semibold;
+    font-style: semiBold;        
+    src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
+    }
+    
+
+.cabecalho {
+    --background: url('/assets/img/bg5.png') no-repeat bottom ;
+    --padding-top:80px;
+    margin: auto;
 }
 
-ion-fab-button {
-    --background: #ffc400;
-}
-
-ion-toolbar{
-    --background: #ffc400;
-    --color: #2f32a0;
-}
-
-ion-grid{
-    background-color: #ffc400; 
-}
-
-.icones {
-    color: #2f32a0;
-    font-size: 64px;
-}
-
-.perfil {
-   --background: #ffc400;
-}
-
-ion-avatar {
-    --border-radius: 20px;
-       border-block-color: #fff;
-}
-
-.nameUser{
-   color: #2f32a0;
+ion-thumbnail {
+    
+    --border-radius: 60px;
+    --size: 110px;
+    margin: auto;
 
 }
 
+ion-text {
+    margin: auto;
+    text-align: center;
+    font-family:OpenSans-Semibold;
+    font-size: 15px;
+    
+}
+
+
+ion-text .cidade{
+
+    font-size: 10px;
+    padding-top: -20%;
+}
+
+.rodape{
+    --background: #e78b02;
+}
+
+.post{
+    --size:30px;
+}

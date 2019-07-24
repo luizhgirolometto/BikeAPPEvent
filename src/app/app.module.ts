@@ -17,7 +17,6 @@ import { registerLocaleData } from '@angular/common';
 
 import localePt from '@angular/common/locales/pt-PT';
 
-
 registerLocaleData(localePt, 'pt-PT');
 
 
@@ -26,7 +25,10 @@ registerLocaleData(localePt, 'pt-PT');
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      rippleEffect: false,
+      mode: 'ios'
+    }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

@@ -1,54 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      HOME
-      </ion-title>
+
+  <ion-header type="ios">
+   <!--<ion-toolbar >
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="notifications()">
         <ion-icon name="notifications"></ion-icon>
         <ion-badge color="dark" slot="end">2</ion-badge>
       </ion-button>
     </ion-buttons>
+  </ion-toolbar>--> 
+
+  <ion-toolbar class="cabecalho" *ngFor="let usuario of usuarios">
+    <ion-thumbnail>
+      <img src="assets/img/img_avatar.png">
+    </ion-thumbnail>
+    <ion-text class="nome">
+      <p>{{usuario.nome}}</p>
+      <p class="cidade">Pato Branco - PR</p>
+    </ion-text>
+
   </ion-toolbar>
-    
-    <ion-toolbar>
-        <ion-grid>
-            <ion-row>
-              <ion-col size="9">
-                  
-                  <ion-item *ngFor="let usuario of usuarios" class="perfil" margin-bottom>
-                    <ion-avatar slot="start" size="large">
-                      <img src="assets/img/img_avatar.png">
-                    </ion-avatar>
-                    <ion-label>
-                      <ion-text class="nameUser">
-                        <h3>{{usuario.nome}}</h3>
-                      </ion-text>
-                      <ion-text>
-                        <h3>
-                          Pato Branco - PR
-                        </h3>
-                      </ion-text>
-                    </ion-label>
-                  </ion-item>
-                </ion-col>
-                <ion-col size="3">
-              </ion-col>
-            </ion-row>
-          </ion-grid>     
-      </ion-toolbar>
 
-
-  <ion-toolbar color="dark">
+  <!-- <ion-toolbar>
     <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
     <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
-        <ion-icon name="options"></ion-icon>
+     <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+       <ion-icon name="options"></ion-icon>
       </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    </ion-buttons> 
+  </ion-toolbar>-->
 
-  
 </ion-header>
 
 <ion-content>
@@ -75,7 +55,9 @@
     <ion-item-sliding *ngFor="let product of products">
       <ion-item>
         <ion-avatar slot="start">
-          <img [src]="product.picture">
+            <ion-thumbnail class="post">
+              <img src="../../../assets/img/mountain-bike.svg">
+            </ion-thumbnail>
         </ion-avatar>
 
         <ion-label>
@@ -107,8 +89,8 @@
 
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
+<ion-footer> 
+  <ion-toolbar  class="rodape">
     <ion-grid>
       <ion-row>
         <ion-col size="4">
