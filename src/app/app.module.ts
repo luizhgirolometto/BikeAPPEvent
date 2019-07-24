@@ -26,7 +26,7 @@ registerLocaleData(localePt, 'pt-PT');
   imports: [
     BrowserModule,
     IonicModule.forRoot({
-      rippleEffect: false,
+      rippleEffect: true,
       mode: 'ios'
     }),
     AppRoutingModule,
