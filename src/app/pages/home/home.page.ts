@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   public usuarios = new Array<User>();
   private productsSubscription: Subscription;
   private userSubscription: Subscription;
-  private usuario: any;
+  
 
 
   constructor(
@@ -38,14 +38,15 @@ export class HomePage implements OnInit {
 
     this.userSubscription = this.userService.getNameUser().subscribe(usuario => {
       this.usuarios = usuario;
-      console.log(this.usuarios);
-    })
+     });
+
+ 
 
   }
 
   ngOnInit() { }
 
-  ngOnDestroy() {
+ ngOnDestroy() {
     this.productsSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }

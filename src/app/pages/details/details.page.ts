@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
 import { CitiesService } from 'src/app/services/cities.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
+
 
 @Component({
   selector: 'app-details',
@@ -17,10 +20,12 @@ export class DetailsPage implements OnInit {
   private productId: string = null;
   public product: Product = {};
   public cities  = new Array<Cities>();
+  public usuarios = new Array<User>();
   private loading: any;
   private productSubscription: Subscription;
+  private userSubscription: Subscription;
   private city: any;
-  
+  private usuario: any; 
 
   constructor(
     private productService: ProductService,
@@ -29,11 +34,13 @@ export class DetailsPage implements OnInit {
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController,
-    private citiesService: CitiesService
+    private citiesService: CitiesService,
+    private userService: UserService
 
   ) {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
+    
 
     console.log(this.productId);
  
@@ -41,10 +48,20 @@ export class DetailsPage implements OnInit {
       this.cities = cidades
     });
 
+    
+
+    this.userSubscription = this.userService.getNameUser().subscribe(usuario => {
+      this.usuarios = usuario;
+      console.log(this.usuarios[0].nome);
+     });
+
+
     if (this.productId) this.loadProduct();
+
+    
   }
 
-  ngOnInit() { }
+  ngOnInit() {  }
 
   ngOnDestroy() {
     if (this.productSubscription) this.productSubscription.unsubscribe();
@@ -53,7 +70,7 @@ export class DetailsPage implements OnInit {
   loadProduct() {
 
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
-      this.product = data;
+      this.product = data; 
     });
   }
 
@@ -74,6 +91,10 @@ export class DetailsPage implements OnInit {
       }
     } else {
       this.product.createdAt = new Date().getTime();
+      this.product.nameUser = this.usuarios[0].nome;
+      
+      
+
 
       try {
         await this.productService.addProduct(this.product);

@@ -51,7 +51,7 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let product of products">
-      <ion-item  button [routerLink]="['/details', product.id]">
+      <ion-item  button [routerLink]="['/product-details', product.id]">
         <ion-avatar slot="start">
           <ion-thumbnail class="post">
             <img src="../../../assets/img/mountain-bike.svg">
@@ -94,7 +94,7 @@
         <ion-col size="4">
           <ion-tab-button (click)="logout()">
             <ion-icon name="log-out"></ion-icon>
-            <ion-label>Sair</ion-label>
+            <ion-label class="labelRodape">Sair</ion-label>
           </ion-tab-button>
 
         </ion-col>
@@ -102,14 +102,14 @@
         <ion-col size="4">
           <ion-tab-button routerLink="/myposts">
             <ion-icon name="bicycle" size="large"></ion-icon>
-            <ion-label>Meus Eventos</ion-label>
+            <ion-label class="labelRodape">Meus Eventos</ion-label>
           </ion-tab-button>
         </ion-col>
 
         <ion-col size="4">
           <ion-tab-button routerLink="/perfil">
             <ion-icon name="person" size="large"></ion-icon>
-            <ion-label>Meu Perfil</ion-label>
+            <ion-label class="labelRodape">Meu Perfil</ion-label>
           </ion-tab-button>
         </ion-col>
 

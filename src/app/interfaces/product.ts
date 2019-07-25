@@ -9,4 +9,5 @@ export interface Product {
     userId?: string;
     dtEvent?: string;
     cities?: string;
+    nameUser?:string;
 }
