@@ -2,7 +2,7 @@ export interface Product {
     id?: string;
     name?: string;
     description?: string;
-    picture?: string;
+    distance?: number;
     nivel?: string;
     modalidade?: string;
     createdAt?: number;
