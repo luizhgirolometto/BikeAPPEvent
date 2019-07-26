@@ -10,7 +10,7 @@
 
 <ion-content class="ion-padding">
 
-  <ion-item>
+  <ion-item lines="none">
     <ion-avatar slot="start">
       <img src="assets/img/img_avatar.png">
     </ion-avatar>
@@ -20,45 +20,22 @@
     </ion-label>
   </ion-item>
 
-  <ion-item lines="full">
-    <h5>{{product.name}}</h5>
-  </ion-item>
-
-  <ion-item lines="full">
-    <ion-grid>
-      <ion-row align-items-center>
-        <ion-col class="iboriti">
-          <p>Data / Hora</p>
-          <ion-label class="information">{{ product.dtEvent | date: 'dd/MM/yy h:mm'  }}</ion-label>
-        </ion-col>
-        <ion-col class="iboriti">
-          <p>Distância</p>
-          <ion-label class="information">{{product.distance}}Km</ion-label>
-        </ion-col>
-        <ion-col class="iboriti">
-          <p>Ritmo</p>
-          <ion-label class="information">{{ product.nivel }}</ion-label>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-item>
-
-  <ion-item lines="none">
-    <p>Descrição do Evento :</p>
-  </ion-item>
-  <ion-item lines="full">
+  <ion-card>
+    <ion-card-content>
       <ion-grid>
-          <ion-row class="description">
-            <ion-col size="12">
-              <div>
-                {{product.description}}
-              </div>
-            </ion-col>
-          </ion-row>
-          </ion-grid>
-    </ion-item>
+        <ion-row>
+          <ion-col size="3" class="coluna1">
 
+            {{product.distance}}Km
 
+          </ion-col>
+          <ion-col>
+            {{product.description}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
 <!--

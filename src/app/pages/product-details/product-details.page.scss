@@ -4,35 +4,9 @@
     src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
     }
     
-
-ion-row {
-    
+.coluna1{
+    background-color: #F18A3D;
+    color: white;
     text-align: center;
-    font-size: 0.8em;
-    flex: 1;
-         
+    font-family: OpenSans-Semibold;
 }
-
-.information{
-    font-size: 1.5em;
-    font-family:OpenSans-Semibold;
-}
-
-p{
-   color:gray;  
-   font-size: 0.8em;
-}
-
-.iboriti {
-   
-    //border: 1px solid gray;
-    pointer-events: none;
-    padding-top: 0px;
- 
-  }
-  
-  .description{
-    text-align: justify;
-    font-size: 0.8em;
-    flex: 1;
-  }
