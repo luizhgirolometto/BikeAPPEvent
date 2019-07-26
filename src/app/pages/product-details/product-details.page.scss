@@ -4,9 +4,27 @@
     src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
     }
     
-.coluna1{
-    background-color: #F18A3D;
-    color: white;
-    text-align: center;
+
+
+ion-row{
     font-family: OpenSans-Semibold;
+    align-items: center;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+ion-card-content p{
+    padding-left: 28px;
+
+}
+.city{
+    font-family: OpenSans-Semibold;
+    font-size: 0.8em;
+
+}
+
+ion-chip{
+    align-items: center;
+    text-align: center;
+    
 }

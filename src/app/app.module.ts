@@ -15,7 +15,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { registerLocaleData } from '@angular/common';
 
+
 import localePt from '@angular/common/locales/pt-PT';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 registerLocaleData(localePt, 'pt-PT');
 
@@ -37,6 +39,7 @@ registerLocaleData(localePt, 'pt-PT');
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Keyboard
     

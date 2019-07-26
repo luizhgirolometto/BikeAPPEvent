@@ -16,26 +16,67 @@
     </ion-avatar>
     <ion-label>
       <h2>{{product.nameUser}}</h2>
-      <p>Criado em: {{product.createdAt  | date: 'dd/MM/yy h:mm'  }}</p>
+      <p>Criado em: {{ product.createdAt  | date: 'dd/MM/yy'  }}</p>
     </ion-label>
   </ion-item>
 
   <ion-card>
+    <ion-item>
+
+      <ion-label class="city">
+        <ion-icon name="pin" color="light"></ion-icon>
+        {{product.cities}}
+      </ion-label>
+      <ion-button fill="clear" (click)="shared()">
+        <ion-icon name="share-alt" slot="end"></ion-icon>
+      </ion-button>
+    </ion-item>
+
     <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="3" class="coluna1">
+      <p>{{product.description}}</p>
 
-            {{product.distance}}Km
 
-          </ion-col>
-          <ion-col>
-            {{product.description}}
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+
+              <ion-label>
+                <ion-icon name="calendar" color="secondary"></ion-icon>
+                {{ product.dtEvent | date: 'dd/MM/yy h:mm'  }}
+              </ion-label>
+
+            </ion-col>
+            <ion-col>
+
+              <ion-label>
+                <ion-icon name="navigate" color="primary"></ion-icon>
+                {{product.distance}}Km
+              </ion-label>
+
+            </ion-col>
+            <ion-col>
+
+              <ion-label>
+                <ion-icon name="flame" color="danger"></ion-icon>
+                {{product.nivel}}
+              </ion-label>
+
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
     </ion-card-content>
   </ion-card>
+  <ion-item>
+      <ion-chip outline color="primary">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>Confirme sua presença</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        
+    </ion-item>
 
 </ion-content>
 <!--

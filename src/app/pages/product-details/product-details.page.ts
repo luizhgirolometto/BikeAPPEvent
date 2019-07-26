@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
@@ -6,6 +6,9 @@ import { NavController, LoadingController, ToastController } from '@ionic/angula
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
+
 
 
 
@@ -29,15 +32,16 @@ export class ProductDetailsPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private socialSharing: SocialSharing
   ) {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
 
-  
 
-   // this.city = this.citiesService.getCities().subscribe(cidades => {
-      //this.cities = cidades
+
+    // this.city = this.citiesService.getCities().subscribe(cidades => {
+    //this.cities = cidades
     //});
 
     if (this.productId) this.loadProduct();
@@ -55,6 +59,18 @@ export class ProductDetailsPage implements OnInit {
       this.product = data;
     });
 
+
+  }
+
+  shared() {
+
+   
+    // Share via email
+    this.socialSharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */).then(() => {
+      console.log('funciona');
+    }).catch(() => {
+      console.log('deu erro');
+    });
 
   }
 
