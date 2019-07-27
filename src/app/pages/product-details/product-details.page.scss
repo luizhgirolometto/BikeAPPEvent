@@ -10,21 +10,25 @@ ion-row{
     font-family: OpenSans-Semibold;
     align-items: center;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.5em;
 }
 
 ion-card-content p{
-    padding-left: 28px;
+    padding-left: 23px;
 
 }
 .city{
     font-family: OpenSans-Semibold;
-    font-size: 0.8em;
+    font-size: 0.6em;
+    padding-left: 25px;
 
 }
 
-ion-chip{
-    align-items: center;
-    text-align: center;
-    
+.confirm{
+    margin: auto;
+
+}
+
+ion-grid{
+    --ion-grid-padding:-50px;
 }

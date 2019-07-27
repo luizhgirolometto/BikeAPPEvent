@@ -64,15 +64,8 @@ export class ProductDetailsPage implements OnInit {
 
   shared() {
 
-   
-    // Share via email
-    this.socialSharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */).then(() => {
-      console.log('funciona');
-    }).catch(() => {
-      console.log('deu erro');
-    });
-
+    this.socialSharing.share('Message, image and link', null, 
+    'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
   }
-
 
 }

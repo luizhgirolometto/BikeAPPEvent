@@ -13,7 +13,7 @@
 
 .cabecalho {
     --background: url('/assets/img/bg5.png') no-repeat bottom ;
-    --padding-top:80px;
+    --padding-top:50px;
     margin: auto;
 }
 
@@ -44,9 +44,6 @@ ion-text .cidade{
     --background: #e78b02;
 }
 
-.post{
-    --size:30px;
-}
 
 .labelRodape{
     color: white;
@@ -56,3 +53,29 @@ ion-icon{
     color: white;
     
 }
+
+ion-avatar{
+    background-color: black;
+    align-items: center;
+    text-align: center;
+}
+
+ion-row{
+    font-size: 0.5em;
+}
+
+.city{
+    font-size: 0.7em;
+    font-family: OpenSans-Semibold;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 0px;
+}
+
+.itensEvent{
+    --padding-start:-20px;
+    --padding-top: -20px;
+    
+
+}
+

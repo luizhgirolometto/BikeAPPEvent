@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons>
       <ion-back-button text="Voltar"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button fill="clear" (click)="shared()">
+        <ion-icon name="share-alt" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>{{product.name}}</ion-title>
   </ion-toolbar>
 
@@ -24,12 +30,12 @@
     <ion-item>
 
       <ion-label class="city">
-        <ion-icon name="pin" color="light"></ion-icon>
+        <ion-icon name="pin" color="primary"></ion-icon>
         {{product.cities}}
       </ion-label>
-      <ion-button fill="clear" (click)="shared()">
-        <ion-icon name="share-alt" slot="end"></ion-icon>
-      </ion-button>
+
+
+
     </ion-item>
 
     <ion-card-content>
@@ -50,7 +56,7 @@
             <ion-col>
 
               <ion-label>
-                <ion-icon name="navigate" color="primary"></ion-icon>
+                <ion-icon name="navigate" color="dark"></ion-icon>
                 {{product.distance}}Km
               </ion-label>
 
@@ -64,19 +70,27 @@
 
             </ion-col>
 
+            <ion-col>
+                <ion-label>
+                  <ion-icon name="bicycle" color="tertiary"></ion-icon>
+                  {{product.modalidade}}
+                </ion-label>
+              </ion-col>
+
           </ion-row>
         </ion-grid>
       </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-item>
-      <ion-chip outline color="primary">
-          <ion-icon name="pin"></ion-icon>
-          <ion-label>Confirme sua presença</ion-label>
-          <ion-icon name="close-circle"></ion-icon>
-        </ion-chip>
-        
-    </ion-item>
+  <ion-item >
+    
+    <ion-chip  class="confirm" outline color="primary">
+      <ion-button fill="clear" >
+      <ion-label>Confirme sua presença</ion-label>
+    </ion-button>
+    </ion-chip>
+
+  </ion-item>
 
 </ion-content>
 <!--
