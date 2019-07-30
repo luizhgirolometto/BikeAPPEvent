@@ -50,6 +50,7 @@ ion-text .cidade{
 
 .rodape{
     --background: #e78b02;
+    font-size: 8em;
 }
 
 
@@ -59,17 +60,8 @@ ion-text .cidade{
 
 ion-icon{
     color: white;
+    font-size: 1.5em;
        
-}
-
-
-
-.city{
-    font-size: 0.7em;
-    font-family: OpenSans-Semibold;
-    text-align: left;
-    padding-left: 10px;
-    padding-bottom: 0px;
 }
 
 ion-row{
@@ -90,9 +82,25 @@ ion-col {
 ion-card{
     margin-top: 5px;
     margin-bottom: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px; 
+
 }
+
+ion-item{
+    --padding-bottom:-10px;
+    --padding-top:-10px;
+    
+}
+
 
 .icone{
     font-size: 32px;
     text-align: right;
 }
+
+.produto{
+    font-family:OpenSans-Semibold;
+    font-size:0.6em;
+}
+
