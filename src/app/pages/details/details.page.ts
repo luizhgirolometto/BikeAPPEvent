@@ -9,6 +9,7 @@ import { Cities } from 'src/app/interfaces/cities';
 import { CitiesService } from 'src/app/services/cities.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { CIDADES } from '../../services/mock-cidades';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class DetailsPage implements OnInit {
   private userSubscription: Subscription;
   private city: any;
   private usuario: any; 
+
+  cidades = CIDADES;
 
   constructor(
     private productService: ProductService,

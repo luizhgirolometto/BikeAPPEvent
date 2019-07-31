@@ -1,4 +1,4 @@
 export class Cidade {
-    id?: string;
-    cidade?: string;
+    id?: number;
+    name?: string;
 }

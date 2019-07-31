@@ -10,6 +10,17 @@
     src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
     }
     
+    @font-face {
+        font-family:OpenSans-Bold;
+        font-style: bold;        
+        src: url("../../../assets/fonts/OpenSans/OpenSans-Bold/OpenSans-Bold.ttf");
+        }
+        
+        @font-face {
+            font-family:OpenSans-Italic;  
+            font-style: italic;     
+            src: url("../../../assets/fonts/OpenSans/OpenSans-Italic/OpenSans-Light.ttf");
+            }
 
 .cabecalho {
     --background: url('/assets/img/bg5.png') no-repeat bottom ;
@@ -31,12 +42,13 @@ ion-thumbnail {
     --size: 110px;
     margin: auto;
 
+     
 }
 
 ion-text {
     margin: auto;
     text-align: center;
-    font-family:OpenSans-Semibold;
+    font-family:OpenSans-SemiBold;
     font-size: 15px;
     
 }
@@ -68,22 +80,25 @@ ion-row{
     text-align: justify;
 }
 
-ion-col .p{
+ion-col {
     font-size: 0.5em;
-    font-family: OpenSans-Regular;
+    font-family: OpenSans-Bold;
+    padding-left: 2px;
+    text-align: right;
+    
+    p{
+        font-family: OpenSans-Regular;
+        font-size: 1em;
+    }
+    ion-chip{
+        --color: #ffff;
+    }
     
 }
 
-ion-col {
-    font-size: 0.5em;
-    font-family: OpenSans-Semibold;
-    padding-left: 2px;
-    text-align: right;
-}
-
 ion-card{
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     padding-bottom: 0px;
     padding-top: 0px; 
   
@@ -98,8 +113,23 @@ ion-item{
 
 .produto{
     text-align: left;
+    
+    
+        h6{
+            font-family:OpenSans-Italic;  
+            margin-top: 2px;
+            padding-left: 5px;
+           
+           
+        }
 
     
+}
+
+.seta{
+    padding-top: 20px;
+
+    font-size: 16px;
 }
 
 
