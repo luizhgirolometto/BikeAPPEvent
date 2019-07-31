@@ -6,7 +6,7 @@
         <ion-badge color="dark" slot="end">2</ion-badge>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>-->
+  </ion-toolbar>
 
   <ion-toolbar translucent  class="cabecalho" *ngFor="let usuario of usuarios">
     <ion-thumbnail>
@@ -17,14 +17,12 @@
       <p>{{usuario.nome}}</p>
       <p class="cidade">Pato Branco - PR</p>
     </ion-text>
-  </ion-toolbar>
+  </ion-toolbar>-->
 
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
     <ion-buttons slot="end">
-     <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
-       <ion-icon name="options"></ion-icon>
-      </ion-button>
+    
     </ion-buttons> 
   </ion-toolbar>
 
