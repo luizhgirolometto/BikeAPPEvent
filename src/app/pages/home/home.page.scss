@@ -22,17 +22,8 @@
             src: url("../../../assets/fonts/OpenSans/OpenSans-Italic/OpenSans-Light.ttf");
             }
 
-.cabecalho {
-    --background: url('/assets/img/bg5.png') no-repeat bottom ;
-    --padding-top:50px;
-    margin: auto;
-}
-
-
-ion-avatar{
-    background-color: black;
-    align-items: center;
-    text-align: center;
+ion-list{
+    margin-bottom: 15px;
 }
 
 
@@ -78,6 +69,7 @@ ion-icon{
 
 ion-row{
     text-align: justify;
+    --color:white;
 }
 
 ion-col {
@@ -101,6 +93,13 @@ ion-card{
     margin-bottom: 3px;
     padding-bottom: 0px;
     padding-top: 0px; 
+   
+
+    ion-item{
+        color: var(--ion-color-light-shade);
+        --background: #066673;
+        
+    }
   
 
 }
@@ -132,7 +131,10 @@ ion-item{
 }
 
 ion-footer{
-  
+  height: 70px;
+  ion-icon{
+      color: #0894A6;
+  }
 }
 
 

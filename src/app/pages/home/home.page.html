@@ -33,7 +33,7 @@
   <ion-list *ngFor="let product of products">
 
     <ion-card button [routerLink]="['/product-details', product.id]">
-      <ion-item color="medium" lines="full">
+      <ion-item  lines="full">
 
         <ion-grid>
           <ion-row class="modalidade">
@@ -43,6 +43,7 @@
                   </ion-chip>
               </ion-col>
             <ion-col size="3">
+            
               Data
               <p>
                 <ion-icon name="calendar" color="secondary"></ion-icon>
@@ -50,6 +51,7 @@
               </p>
             </ion-col>
             <ion-col size="3">
+            
               Distância
               <p>
                 <ion-icon name="navigate" color="primary"></ion-icon>
@@ -57,6 +59,7 @@
               </p>
             </ion-col>
             <ion-col size="3">
+           
               Ritmo
               <p>
                 <ion-icon name="flame" color="danger"></ion-icon>
@@ -66,6 +69,7 @@
           </ion-row>
         </ion-grid>
       </ion-item>
+
       <ion-item ion-padding color="medium" lines="full">
         <ion-grid>
           <ion-row>
