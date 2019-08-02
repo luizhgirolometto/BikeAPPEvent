@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController,ModalController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+
+import { SearchFilterPage } from '../../modal/search-filter/search-filter.page';
 
 
 
@@ -29,6 +31,7 @@ export class HomePage implements OnInit {
     private productService: ProductService,
     private toastCtrl: ToastController,
     private userService: UserService,
+    public modalCtrl: ModalController
 
   ) {
 
@@ -79,5 +82,12 @@ export class HomePage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
+  }
+
+  async searchFilter () {
+    const modal = await this.modalCtrl.create({
+      component: SearchFilterPage
+    });
+    return await modal.present();
   }
 }

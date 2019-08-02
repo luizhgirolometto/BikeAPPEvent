@@ -19,6 +19,8 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt-PT';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { SearchFilterPageModule } from './modal/search-filter/search-filter.module';
+
 registerLocaleData(localePt, 'pt-PT');
 
 
@@ -34,7 +36,8 @@ registerLocaleData(localePt, 'pt-PT');
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SearchFilterPageModule
   ],
   providers: [
     StatusBar,

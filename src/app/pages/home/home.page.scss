@@ -61,6 +61,11 @@ ion-text .cidade{
     color: white;
 }
 
+ion-grid{
+
+    margin-left: -2px;
+}
+
 ion-icon{
     color: white;
     font-size: 1.5em;
@@ -97,7 +102,7 @@ ion-col {
 
 
 ion-card{
-    margin-top: 3px;
+    margin-top: 10px;
     margin-bottom: 3px;
     padding-bottom: 0px;
     padding-top: 0px; 
@@ -141,8 +146,8 @@ ion-item{
 ion-footer{
   height: 70px;
   ion-icon{
-      color: #0894A6;
-      background: transparent;
+      color: #73421D;
+      
   }
 }
 

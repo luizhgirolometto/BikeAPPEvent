@@ -19,11 +19,13 @@
     </ion-text>
   </ion-toolbar>-->
 
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
     <ion-buttons slot="end">
-    
-    </ion-buttons> 
+      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+        <ion-icon name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
@@ -117,7 +119,7 @@
 
         <ion-col size="4">
           <ion-tab-button routerLink="/myposts">
-            <ion-icon name="bicycle" size="large"></ion-icon>
+            <ion-icon name="bicycle" size="large"></ion-icon>       
             <ion-label class="labelRodape">Meus Eventos</ion-label>
           </ion-tab-button>
         </ion-col>
