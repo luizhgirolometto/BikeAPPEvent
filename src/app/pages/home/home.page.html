@@ -1,5 +1,5 @@
-<ion-header translucent>
- <!-- <ion-toolbar >
+<ion-header>
+  <!-- <ion-toolbar >
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="notifications()">
         <ion-icon name="notifications"></ion-icon>
@@ -20,11 +20,13 @@
   </ion-toolbar>-->
 
   <ion-toolbar color="primary">
-    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar por: Nome..titulo..cidade..modalidade" animated
+      (ionChange)="buscarUsuario( $event )">
+    </ion-searchbar>
     <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+      <!--   <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
         <ion-icon name="options"></ion-icon>
-      </ion-button>
+      </ion-button>-->
     </ion-buttons>
   </ion-toolbar>
 
@@ -32,20 +34,21 @@
 <ion-content>
 
 
-  <ion-list *ngFor="let product of products">
+  <ion-list *ngIf="products.length > 0">
 
-    <ion-card button [routerLink]="['/product-details', product.id]">
-      <ion-item  lines="full">
+    <ion-card button [routerLink]="['/product-details', product.id]"
+      *ngFor="let product of products | filtro:textoBuscar" animated>
+      <ion-item lines="full">
 
         <ion-grid>
-          <ion-row >
-            <ion-col class="modalidade"  size="3">
-                <ion-chip>
-                    <ion-label>{{product.modalidade}}</ion-label>
-                  </ion-chip>
-              </ion-col>
+          <ion-row>
+            <ion-col class="modalidade" size="3">
+              <ion-chip>
+                <ion-label>{{product.modalidade}}</ion-label>
+              </ion-chip>
+            </ion-col>
             <ion-col size="3">
-            
+
               Data
               <p>
                 <ion-icon name="calendar" color="secondary"></ion-icon>
@@ -59,8 +62,8 @@
                 {{product.distance}}Km
               </p>
             </ion-col>
-            <ion-col  size="3">
-           
+            <ion-col size="3">
+
               Ritmo
               <p>
                 <ion-icon name="flame" color="danger"></ion-icon>
@@ -75,16 +78,16 @@
         <ion-grid>
           <ion-row>
             <ion-col class="produto" size="10">
-              <h6 >{{product.name}}</h6>
+              <h6>{{product.name}}</h6>
               <p>
                 <ion-icon name="pin" color="danger"></ion-icon>
                 {{product.cities}}
               </p>
-            </ion-col >
-          
+            </ion-col>
+
             <ion-col size="2">
-              <ion-label class="seta" >
-                <ion-icon name="arrow-round-forward" size="large"  color="light"></ion-icon>
+              <ion-label class="seta">
+                <ion-icon name="arrow-round-forward" size="large" color="light"></ion-icon>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -119,7 +122,7 @@
 
         <ion-col size="4">
           <ion-tab-button routerLink="/myposts">
-            <ion-icon name="bicycle" size="large"></ion-icon>       
+            <ion-icon name="bicycle" size="large"></ion-icon>
             <ion-label class="labelRodape">Meus Eventos</ion-label>
           </ion-tab-button>
         </ion-col>
@@ -128,7 +131,7 @@
 
         <ion-col size="4">
           <ion-tab-button (click)="logout()">
-            <ion-icon name="log-out"  size="large"></ion-icon>
+            <ion-icon name="log-out" size="large"></ion-icon>
             <ion-label class="labelRodape">Sair</ion-label>
           </ion-tab-button>
         </ion-col>

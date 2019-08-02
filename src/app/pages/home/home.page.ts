@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { LoadingController, ToastController,ModalController } from '@ionic/angular';
+import { LoadingController, ToastController, ModalController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
@@ -22,8 +22,10 @@ export class HomePage implements OnInit {
   public usuarios = new Array<User>();
   private productsSubscription: Subscription;
   private userSubscription: Subscription;
-  
 
+  textoBuscar = '';
+
+  
 
   constructor(
     private authService: AuthService,
@@ -41,15 +43,15 @@ export class HomePage implements OnInit {
 
     this.userSubscription = this.userService.getNameUser().subscribe(usuario => {
       this.usuarios = usuario;
-     });
+    });
 
- 
+
 
   }
 
   ngOnInit() { }
 
- ngOnDestroy() {
+  ngOnDestroy() {
     this.productsSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }
@@ -84,10 +86,18 @@ export class HomePage implements OnInit {
     toast.present();
   }
 
-  async searchFilter () {
+  async searchFilter() {
     const modal = await this.modalCtrl.create({
       component: SearchFilterPage
     });
     return await modal.present();
+  }
+
+  async buscarUsuario(event) {
+
+    const texto = event.target.value;
+    this.textoBuscar = texto;
+
+
   }
 }
