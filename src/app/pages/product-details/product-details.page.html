@@ -41,13 +41,13 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label>
-        <ion-icon name="bicycle"  color="primary"></ion-icon>
+        <ion-icon name="bicycle" color="primary"></ion-icon>
         {{product.modalidade}}
       </ion-label>
     </ion-item>
     <ion-item lines="full">
       <ion-label>
-        <ion-icon name="flame" color="primary"></ion-icon>
+          <ion-icon name="pulse" size="medium" color="primary"></ion-icon>
         {{product.nivel}}
       </ion-label>
     </ion-item>
@@ -57,11 +57,14 @@
         {{product.distance}} km
       </ion-label>
     </ion-item>
+    <ion-item lines="none">
+       Descrição do Evento:
+     </ion-item>
 
     <ion-item lines="none">
-        <ion-label>Descrição:</ion-label>
+        <ion-card-content>   
           <p>{{product.description}} </p>
-        
+        </ion-card-content>
       </ion-item>
   </ion-card>
 
@@ -71,7 +74,6 @@
         <ion-label>Confirme sua presença</ion-label>
       </ion-button>
     </ion-chip>
-
   </ion-item>
 
 </ion-content>
