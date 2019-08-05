@@ -10,143 +10,59 @@
     src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
     }
     
-    @font-face {
-        font-family:OpenSans-Bold;
-        font-style: bold;        
-        src: url("../../../assets/fonts/OpenSans/OpenSans-Bold/OpenSans-Bold.ttf");
-        }
-        
-        @font-face {
-            font-family:OpenSans-Italic;  
-            font-style: italic;     
-            src: url("../../../assets/fonts/OpenSans/OpenSans-Italic/OpenSans-Light.ttf");
-            }
-
-ion-list{
-    margin-bottom: 15px;
-}
 
 
-ion-thumbnail {
+            @font-face {
+                font-family:OpenSans-ExtraBold;  
+                font-style: extraBold;     
+                src: url("../../../assets/fonts/OpenSans/OpenSans-ExtraBold/OpenSans-ExtraBold.ttf");
+                }
     
-    --border-radius: 60px;
-    --size: 110px;
-    margin: auto;
-
-     
-}
-
-ion-text {
-    margin: auto;
-    text-align: center;
-    font-family:OpenSans-SemiBold;
-    font-size: 15px;
-    
-}
-
-
-ion-text .cidade{
-
-    font-size: 10px;
-    padding-top: -20%;
-}
-
-.rodape{
-    --background: #e78b02;
-    font-size: 8em;
-}
-
-
-.labelRodape{
-    color: white;
-}
-
-ion-grid{
-
-    margin-left: -2px;
-}
-
-ion-icon{
-    color: white;
-    font-size: 1.5em;
-       
-}
-
-ion-row{
-    text-align: justify;
-    --color:white;
-}
-
-ion-col {
-    font-size: 0.6em;
-    font-family: OpenSans-Bold;
-    padding-left: 2px;
-    text-align: right;
-    
-    p{
-        font-family: OpenSans-Regular;
-        font-size: 1.1em;
-    }
-    ion-chip{
-        --color: #ffff;
-    }  
-
-   
-}
-
-.modalidade{
-    text-align: left;
-    align-content: left;
-}
-
-
-
-ion-card{
-    margin-top: 10px;
-    margin-bottom: 3px;
-    padding-bottom: 0px;
-    padding-top: 0px; 
-   
-
-    ion-item{
-        color: var(--ion-color-light-shade);
-        --background: #066673;
-        
-    }
-  
-
-}
 
 ion-item{
-    --padding-bottom:-10px;
-    --padding-top:-10px;
+    --background:#066673;
     
-}
+    ion-label{
+        font-family: OpenSans-Regular;
+    }
 
-.produto{
-    text-align: left;
-    
-    
-        h6{
-            font-family:OpenSans-Italic;  
-            margin-top: 2px;
-            padding-left: 5px;
-           
-           
+    ion-grid{
+
+        .title{
+            font-size: 1em;
+            text-align: left;
+            color: var(--ion-color-light);
         }
 
+        
+        .distance{
+            padding-top: 25px;
+            font-size:2em;
+            font-family:OpenSans-ExtraBold;
+            color:#F28B3D;
+        }
+
+        .info{
+            font-size:0.9em;
+            font-family: OpenSans-Semibold;
+            text-align: left;
+            color: var(--ion-color-light);
+        }
+    }
+
     
 }
 
-.seta{
-    padding-top: 20px;
-    font-size: 16px;
+.city{
+    font-size: 1em;
+    text-align: left;
 }
 
 ion-footer{
   height: 70px;
+  --color: gray;
   ion-icon{
-      color: #73421D;
+      color: gray;
       
   }
 }

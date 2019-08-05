@@ -19,8 +19,8 @@
     </ion-text>
   </ion-toolbar>-->
 
-  <ion-toolbar color="primary">
-    <ion-searchbar placeholder="Buscar por: Nome..titulo..cidade..modalidade" animated
+  <ion-toolbar color="medium">
+    <ion-searchbar color="light" placeholder="Buscar por: Nome..titulo..cidade..modalidade" animated
       (ionChange)="buscarUsuario( $event )">
     </ion-searchbar>
     <ion-buttons slot="end">
@@ -33,65 +33,40 @@
 </ion-header>
 <ion-content>
 
-
   <ion-list *ngIf="products.length > 0">
-
     <ion-card button [routerLink]="['/product-details', product.id]"
       *ngFor="let product of products | filtro:textoBuscar" animated>
       <ion-item lines="full">
-
         <ion-grid>
           <ion-row>
-            <ion-col class="modalidade" size="3">
-              <ion-chip>
-                <ion-label>{{product.modalidade}}</ion-label>
-              </ion-chip>
+            <ion-col class="title" size="12">
+             {{product.name}}
             </ion-col>
-            <ion-col size="3">
-
-              Data
-              <p>
-                <ion-icon name="calendar" color="secondary"></ion-icon>
-                {{ product.dtEvent | date: 'dd/MM/yy'  }}
-              </p>
-            </ion-col>
-            <ion-col size="3">
-              Distância
-              <p>
-                <ion-icon name="navigate" color="primary"></ion-icon>
-                {{product.distance}}Km
-              </p>
-            </ion-col>
-            <ion-col size="3">
-
-              Ritmo
-              <p>
-                <ion-icon name="flame" color="danger"></ion-icon>
-                {{product.nivel}}
-              </p>
-            </ion-col>
+           
           </ion-row>
         </ion-grid>
       </ion-item>
 
-      <ion-item ion-padding color="medium" lines="full">
+      <ion-item lines="full">
         <ion-grid>
           <ion-row>
-            <ion-col class="produto" size="10">
-              <h6>{{product.name}}</h6>
-              <p>
-                <ion-icon name="pin" color="danger"></ion-icon>
-                {{product.cities}}
-              </p>
+            <ion-col class="distance" size="6">
+              {{product.distance}} km
             </ion-col>
-
-            <ion-col size="2">
-              <ion-label class="seta">
-                <ion-icon name="arrow-round-forward" size="large" color="light"></ion-icon>
-              </ion-label>
+            <ion-col class="info"  size="6">
+              <ion-icon name="calendar" color="danger"></ion-icon>
+              {{ product.dtEvent | date: 'dd/MM/yy'  }}<br><br>
+              <ion-icon name="flame" color="danger"></ion-icon>
+              {{product.modalidade}} <br><br>
+              <ion-icon name="pulse" size="medium" color="danger"></ion-icon>
+              {{product.nivel}}
             </ion-col>
           </ion-row>
         </ion-grid>
+      </ion-item>
+      <ion-item class="city" color="medium" lines="none">
+          <ion-icon name="pin" color="danger"></ion-icon>
+          {{product.cities}}
       </ion-item>
     </ion-card>
   </ion-list>
@@ -122,7 +97,7 @@
 
         <ion-col size="4">
           <ion-tab-button routerLink="/myposts">
-            <ion-icon name="bicycle" size="large"></ion-icon>
+            <ion-icon name="list-box" size="large"></ion-icon>
             <ion-label class="labelRodape">Meus Eventos</ion-label>
           </ion-tab-button>
         </ion-col>

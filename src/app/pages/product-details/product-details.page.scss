@@ -5,30 +5,11 @@
     }
     
 
+    ion-card{
+        ion-item{
+            --background:#066673;
+            color: var(--ion-color-light);
+        }
+    }
 
-ion-row{
-    font-family: OpenSans-Semibold;
-    align-items: center;
-    text-align: center;
-    font-size: 0.5em;
-}
-
-ion-card-content p{
-    padding-left: 23px;
-
-}
-.city{
-    font-family: OpenSans-Semibold;
-    font-size: 0.6em;
-    padding-left: 25px;
-
-}
-
-.confirm{
-    margin: auto;
-
-}
-
-ion-grid{
-    --ion-grid-padding:-50px;
-}
+  
