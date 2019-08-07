@@ -76,9 +76,8 @@ export class ProductDetailsPage implements OnInit {
 
     this.product.userId = this.authService.getAuth().currentUser.uid;
    
-
     try {
-   //   await this.addUserlist.insertNameList(this.authService.getAuth().currentUser.uid);
+     await this.addUserlist.insertNameList(this.authService.getAuth().currentUser.uid);
      
     }
   }
