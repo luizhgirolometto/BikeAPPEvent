@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AddUserlistService } from 'src/app/services/add-userlist.service';
 
 
 
@@ -33,7 +34,9 @@ export class ProductDetailsPage implements OnInit {
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private addUserlist: AddUserlistService
+
   ) {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
@@ -68,4 +71,28 @@ export class ProductDetailsPage implements OnInit {
     'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
   }
 
-}
+  async addUserList(){
+    await this.presentLoading();
+
+    this.product.userId = this.authService.getAuth().currentUser.uid;
+   
+
+    try {
+   //   await this.addUserlist.insertNameList(this.authService.getAuth().currentUser.uid);
+     
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
+  }
+
+  }
+
+

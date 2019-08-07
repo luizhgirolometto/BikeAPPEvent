@@ -60,7 +60,6 @@
     <ion-item lines="none">
        Descrição do Evento:
      </ion-item>
-
     <ion-item lines="none">
         <ion-card-content>   
           <p>{{product.description}} </p>
@@ -70,7 +69,7 @@
 
   <ion-item>
     <ion-chip class="confirm" outline color="primary">
-      <ion-button fill="clear">
+      <ion-button fill="clear" (click)="addUserList()">
         <ion-label>Confirme sua presença</ion-label>
       </ion-button>
     </ion-chip>
