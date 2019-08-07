@@ -1,22 +1,22 @@
+import { UserList } from './../interfaces/userlist';
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { Product } from '../interfaces/product';
-import { User } from 'firebase';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddUserlistService {
-  private listEventUser: AngularFirestoreCollection<Product>;
+  private listEventUser: AngularFirestoreCollection<any>;
  
   constructor(private afu: AngularFirestore,
     private authService: AuthService,) {
-    this.listEventUser = this.afu.collection<Product>('products/listUsers');
+    this.listEventUser = this.afu.collection<any>('products/listUsers');
     
   }
 
-  insertNameList(userUId: Product) {
+  insertNameList(userUId: any) {
     return this.listEventUser.add(userUId);
   }
 }

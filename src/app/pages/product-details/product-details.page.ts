@@ -1,3 +1,4 @@
+import { UserList } from './../../interfaces/userlist';
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +14,8 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 
 
 
+
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.page.html',
@@ -21,6 +24,7 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 export class ProductDetailsPage implements OnInit {
   private productId: string = null;
   public product: Product = {};
+  public userData:  UserList = {};
   public cities = new Array<Cities>();
   private loading: any;
   private productSubscription: Subscription;
@@ -73,14 +77,16 @@ export class ProductDetailsPage implements OnInit {
 
   async addUserList(){
     await this.presentLoading();
-
-    this.product.userId = this.authService.getAuth().currentUser.uid;
-   
+  
     try {
-     await this.addUserlist.insertNameList(this.authService.getAuth().currentUser.uid);
-     
-    }
-  }
+
+      this.userData.userUid = this.authService.getAuth().currentUser.uid;
+
+     await this.addUserlist.insertNameList(this.userData);
+    
+    } catch (error) {
+      }
+  } 
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
