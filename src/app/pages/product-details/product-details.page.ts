@@ -24,7 +24,7 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 export class ProductDetailsPage implements OnInit {
   private productId: string = null;
   public product: Product = {};
-  public userData:  UserList = {};
+  public userData:  Product = {};
   public cities = new Array<Cities>();
   private loading: any;
   private productSubscription: Subscription;
@@ -82,9 +82,9 @@ export class ProductDetailsPage implements OnInit {
   
     try {
 
-      this.userData.userUid = this.authService.getAuth().currentUser.uid;
+     this.userData.userId = this.authService.getAuth().currentUser.uid;
 
-     await this.addUserlist.insertNameList(this.userData);
+     await this.addUserlist.insertNameList( this.userData);  
      this.loading.dismiss();
     } catch (error) {
       console.log(error);
