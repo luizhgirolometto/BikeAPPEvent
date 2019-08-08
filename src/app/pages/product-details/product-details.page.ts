@@ -64,6 +64,8 @@ export class ProductDetailsPage implements OnInit {
 
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
+
+      console.log(this.productId);
     });
 
 
@@ -83,8 +85,11 @@ export class ProductDetailsPage implements OnInit {
       this.userData.userUid = this.authService.getAuth().currentUser.uid;
 
      await this.addUserlist.insertNameList(this.userData);
-    
+     this.loading.dismiss();
     } catch (error) {
+      console.log(error);
+      this.loading.dismiss()
+      
       }
   } 
 

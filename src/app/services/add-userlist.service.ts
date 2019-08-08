@@ -1,7 +1,10 @@
 import { UserList } from './../interfaces/userlist';
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from './auth.service';
+import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { ProductService } from './product.service';
+import { Subscription } from 'rxjs';
+import { Product } from '../interfaces/product';
+
 
 
 @Injectable({
@@ -9,14 +12,33 @@ import { AuthService } from './auth.service';
 })
 export class AddUserlistService {
   private listEventUser: AngularFirestoreCollection<any>;
+  private productId: string = null;
+  private productSubscription: Subscription;
+  public product: Product = {};
+
  
   constructor(private afu: AngularFirestore,
-    private authService: AuthService,) {
-    this.listEventUser = this.afu.collection<any>('products/listUsers');
-    
-  }
+  private productService: ProductService) {
 
-  insertNameList(userUId: any) {
-    return this.listEventUser.add(userUId);
-  }
-}
+    this.listEventUser = this.afu.collection<any>('Products');
+    
+      }
+
+ngOnInit() {
+
+  this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
+  this.product = data;
+
+    console.log(this.productId);
+  });
+  
+ }
+ 
+    insertNameList(userUId: any) {
+        console.log(userUId);
+         return this.listEventUser.add(userUId);
+         
+        }
+
+      
+      }
