@@ -5,6 +5,7 @@ import { Product } from '../interfaces/product';
 import { ProductService } from './product.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth.service';
+import { map } from 'rxjs/operators';
 
 
 
@@ -15,9 +16,6 @@ import { AuthService } from './auth.service';
 export class AddUserlistService {
   private productsCollection: AngularFirestoreCollection<Product>;
   public usuario: any;
-  private listEventUser: AngularFirestoreCollection<Product>;
-  private productId: string = null;
-  private productSubscription: Subscription;
   public product: Product = {};
 
   constructor(private afs: AngularFirestore,

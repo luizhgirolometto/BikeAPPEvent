@@ -17,10 +17,6 @@ export class MypostsPage implements OnInit {
   public cities = new Array<Cities>();
   private productsSubscription: Subscription;
 
-
- 
-  
-
   constructor(
    
     private loadingCtrl: LoadingController,

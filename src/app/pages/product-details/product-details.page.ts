@@ -56,14 +56,9 @@ export class ProductDetailsPage implements OnInit {
   loadProduct() {
 
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
-    this.product = data;
-
+      this.product = data;
       console.log(this.product);
-
-   
-
     });
-
 
   }
 
