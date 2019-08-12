@@ -12,22 +12,20 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 
 
 
-
-
-
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.page.html',
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
-  private productId: string = null;
+  private productId: any = null;
   public product: Product = {};
-  public userData:  Product = {};
+  public userData: Product = {};
+  public listUser: Product = {};
   public cities = new Array<Cities>();
   private loading: any;
   private productSubscription: Subscription;
+  private userListSubscription: Subscription;
   private city: any;
 
 
@@ -45,12 +43,6 @@ export class ProductDetailsPage implements OnInit {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
 
-
-
-    // this.city = this.citiesService.getCities().subscribe(cidades => {
-    //this.cities = cidades
-    //});
-
     if (this.productId) this.loadProduct();
   }
 
@@ -58,38 +50,38 @@ export class ProductDetailsPage implements OnInit {
 
   ngOnDestroy() {
     if (this.productSubscription) this.productSubscription.unsubscribe();
+    if (this.userListSubscription) this.userListSubscription.unsubscribe();
   }
 
   loadProduct() {
 
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
-      this.product = data;
+    this.product = data;
+
+      console.log(this.product);
+
+   
+
     });
 
 
   }
 
-  shared() {
-
-    this.socialSharing.share('Message, image and link', null, 
-    'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
-  }
-
-  async addUserList(){
+  async addUserList() {
     await this.presentLoading();
-  
+
     try {
 
-     this.userData.userId = this.authService.getAuth().currentUser.uid;
+      this.userData.userId = this.authService.getAuth().currentUser.uid;
 
-     await this.addUserlist.insertNameList(this.userData, this.productId);  
-     this.loading.dismiss();
+      await this.addUserlist.insertNameList(this.userData, this.productId);
+      this.loading.dismiss();
     } catch (error) {
       console.log(error);
       this.loading.dismiss()
-      
-      }
-  } 
+
+    }
+  }
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
@@ -101,6 +93,12 @@ export class ProductDetailsPage implements OnInit {
     toast.present();
   }
 
+  shared() {
+
+    this.socialSharing.share('Message, image and link', null,
+      'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
   }
+
+}
 
 

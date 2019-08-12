@@ -47,7 +47,7 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label>
-          <ion-icon name="pulse" size="medium" color="primary"></ion-icon>
+        <ion-icon name="pulse" size="medium" color="primary"></ion-icon>
         {{product.nivel}}
       </ion-label>
     </ion-item>
@@ -58,13 +58,13 @@
       </ion-label>
     </ion-item>
     <ion-item lines="none">
-       Descrição do Evento:
-     </ion-item>
+      Descrição do Evento:
+    </ion-item>
     <ion-item lines="none">
-        <ion-card-content>   
-          <p>{{product.description}} </p>
-        </ion-card-content>
-      </ion-item>
+      <ion-card-content>
+        <p>{{product.description}} </p>
+      </ion-card-content>
+    </ion-item>
   </ion-card>
 
   <ion-item>
@@ -74,6 +74,51 @@
       </ion-button>
     </ion-chip>
   </ion-item>
+
+  <!-- lista de presença -->
+  <ion-list>
+    <ion-list-header>
+      Presença confirmada
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="/assets/img/img_avatar.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Finn</h2>
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="/assets/img/img_avatar.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Han</h2>
+
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="/assets/img/img_avatar.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Rey</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="/assets/img/img_avatar.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Luke</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
 <!--
