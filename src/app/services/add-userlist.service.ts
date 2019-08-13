@@ -29,9 +29,13 @@ export class AddUserlistService {
 
   }
 
-  getUserList() {
+  getEventUserList(id: string) {
+    return this.productsCollection.doc<Product>(id).collection('userlist/').valueChanges();
+  }
+
+  getListUserData(userUid: Product) {
   
-    return  this.afs.collection('Users', ref => ref.where('userUid', '==', this.usuario = this.authService.getAuth().currentUser.uid)).snapshotChanges().pipe(
+    return  this.afs.collection('Users', ref => ref.where('userUid', '==', userUid)).snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -43,8 +47,5 @@ export class AddUserlistService {
     );
   }
 
-  getProduct(id: string) {
-    return this.productsCollection.doc<Product>(id).valueChanges();
-  }
 
 }

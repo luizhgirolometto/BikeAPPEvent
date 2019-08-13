@@ -1,4 +1,3 @@
-import { UserList } from './../../interfaces/userlist';
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +20,7 @@ export class ProductDetailsPage implements OnInit {
   private productId: any = null;
   public product: Product = {};
   public userData: Product = {};
-  public listUser: Product = {};
+  public listUser: any = {};
   public cities = new Array<Cities>();
   private loading: any;
   private productSubscription: Subscription;
@@ -37,7 +36,7 @@ export class ProductDetailsPage implements OnInit {
     private authService: AuthService,
     private toastCtrl: ToastController,
     private socialSharing: SocialSharing,
-    private addUserlist: AddUserlistService
+    private addUserlistService: AddUserlistService
 
   ) {
 
@@ -60,6 +59,13 @@ export class ProductDetailsPage implements OnInit {
       console.log(this.product);
     });
 
+    this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
+      this.listUser = data;
+      console.log(this.listUser);
+
+    });
+
+
   }
 
   async addUserList() {
@@ -69,7 +75,7 @@ export class ProductDetailsPage implements OnInit {
 
       this.userData.userId = this.authService.getAuth().currentUser.uid;
 
-      await this.addUserlist.insertNameList(this.userData, this.productId);
+      await this.addUserlistService.insertNameList(this.userData, this.productId);
       this.loading.dismiss();
     } catch (error) {
       console.log(error);
