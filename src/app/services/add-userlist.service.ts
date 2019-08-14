@@ -17,6 +17,7 @@ export class AddUserlistService {
   private productsCollection: AngularFirestoreCollection<Product>;
   public usuario: any;
   public product: Product = {};
+  
 
   constructor(private afs: AngularFirestore,
     private authService: AuthService,) {
@@ -24,13 +25,13 @@ export class AddUserlistService {
       this.usuario = this.authService.getAuth().currentUser.uid;
   }
 
-  insertNameList(userUId: Product, produto: Product) {
-    return this.afs.doc('Products/' + produto).collection<any>('userlist').add(userUId);
+  insertNameList(userUId: Product, nameUser: Product ,produto: Product) {
+    return this.afs.doc('Products/' + produto).collection<any>('userlist').add({id: userUId, name: nameUser});
 
   }
 
   getEventUserList(id: string) {
-    return this.productsCollection.doc<Product>(id).collection('userlist/').valueChanges();
+    return this.productsCollection.doc<Product>(id).collection('userlist').valueChanges();
   }
 
   getListUserData(userUid: Product) {
@@ -46,6 +47,5 @@ export class AddUserlistService {
       })
     );
   }
-
 
 }

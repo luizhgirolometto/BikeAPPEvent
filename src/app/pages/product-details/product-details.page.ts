@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +13,7 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 
 
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.page.html',
@@ -21,14 +23,16 @@ export class ProductDetailsPage implements OnInit {
   private productId: any = null;
   public product: Product = {};
   public userData: Product = {};
-  public listUser: any = {};
+  public listUsers: any = {};
   public cities = new Array<Cities>();
   public dataUserList: any = {};
+  public datauser: any = {};
+  public nameUser: any = {};
   private loading: any;
   private productSubscription: Subscription;
   private userListSubscription: Subscription;
   private dataUserListSubscription: Subscription;
-  private city: any;
+
 
 
   constructor(
@@ -39,7 +43,8 @@ export class ProductDetailsPage implements OnInit {
     private authService: AuthService,
     private toastCtrl: ToastController,
     private socialSharing: SocialSharing,
-    private addUserlistService: AddUserlistService
+    private addUserlistService: AddUserlistService,
+    private userService: UserService,
 
   ) {
 
@@ -64,16 +69,15 @@ export class ProductDetailsPage implements OnInit {
     });
 
     this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
-      this.listUser = 'LNz3hfMlhLY1LepzxpVk3izgcFS2';
-      console.log(this.listUser);
-     
+      this.listUsers = data;
+      console.log('lista de usuario', this.listUsers);
 
-      this.dataUserListSubscription = this.addUserlistService.getListUserData(this.listUser).subscribe(data => {
+      this.dataUserListSubscription = this.addUserlistService.getListUserData(this.listUsers[0].userId).subscribe(data => {
         this.dataUserList = data;
         console.log(this.dataUserList);
-      });
-     
+        this.datauser = this.listUsers[0];
 
+      });
     });
 
 
@@ -85,8 +89,10 @@ export class ProductDetailsPage implements OnInit {
     try {
 
       this.userData.userId = this.authService.getAuth().currentUser.uid;
+      this.nameUser = this.userService.getNameUser();
+      console.log(this.nameUser);
 
-      await this.addUserlistService.insertNameList(this.userData, this.productId);
+      await this.addUserlistService.insertNameList(this.userData,this.nameUser ,this.productId);
       this.loading.dismiss();
     } catch (error) {
       console.log(error);
