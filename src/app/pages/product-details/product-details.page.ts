@@ -11,6 +11,7 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 
 
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.page.html',
@@ -22,9 +23,11 @@ export class ProductDetailsPage implements OnInit {
   public userData: Product = {};
   public listUser: any = {};
   public cities = new Array<Cities>();
+  public dataUserList: any = {};
   private loading: any;
   private productSubscription: Subscription;
   private userListSubscription: Subscription;
+  private dataUserListSubscription: Subscription;
   private city: any;
 
 
@@ -50,6 +53,7 @@ export class ProductDetailsPage implements OnInit {
   ngOnDestroy() {
     if (this.productSubscription) this.productSubscription.unsubscribe();
     if (this.userListSubscription) this.userListSubscription.unsubscribe();
+    if (this.dataUserListSubscription) this.dataUserListSubscription.unsubscribe();
   }
 
   loadProduct() {
@@ -60,8 +64,15 @@ export class ProductDetailsPage implements OnInit {
     });
 
     this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
-      this.listUser = data;
+      this.listUser = 'LNz3hfMlhLY1LepzxpVk3izgcFS2';
       console.log(this.listUser);
+     
+
+      this.dataUserListSubscription = this.addUserlistService.getListUserData(this.listUser).subscribe(data => {
+        this.dataUserList = data;
+        console.log(this.dataUserList);
+      });
+     
 
     });
 
