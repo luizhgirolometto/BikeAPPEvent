@@ -9,10 +9,7 @@ import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AddUserlistService } from 'src/app/services/add-userlist.service';
-
-
-
-
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-product-details',
@@ -22,17 +19,20 @@ import { AddUserlistService } from 'src/app/services/add-userlist.service';
 export class ProductDetailsPage implements OnInit {
   private productId: any = null;
   public product: Product = {};
-  public userData: Product = {};
-  public listUsers: any = {};
+  public userData: any = {};
+  public DadosUser: any = {};
+  public listUsers: any = [];
   public cities = new Array<Cities>();
   public dataUserList: any = {};
   public datauser: any = {};
-  public nameUser: any = {};
+  public nameUser: any = [];
   private loading: any;
   private productSubscription: Subscription;
   private userListSubscription: Subscription;
-  private dataUserListSubscription: Subscription;
+  private nameUserListSubscription: Subscription;
 
+  showDelete = false;
+  showAdd = true;
 
 
   constructor(
@@ -44,7 +44,9 @@ export class ProductDetailsPage implements OnInit {
     private toastCtrl: ToastController,
     private socialSharing: SocialSharing,
     private addUserlistService: AddUserlistService,
-    private userService: UserService,
+    private userService: UserService
+
+
 
   ) {
 
@@ -58,7 +60,7 @@ export class ProductDetailsPage implements OnInit {
   ngOnDestroy() {
     if (this.productSubscription) this.productSubscription.unsubscribe();
     if (this.userListSubscription) this.userListSubscription.unsubscribe();
-    if (this.dataUserListSubscription) this.dataUserListSubscription.unsubscribe();
+    if (this.nameUserListSubscription) this.nameUserListSubscription.unsubscribe();
   }
 
   loadProduct() {
@@ -70,14 +72,12 @@ export class ProductDetailsPage implements OnInit {
 
     this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
       this.listUsers = data;
-      console.log('lista de usuario', this.listUsers);
+      console.log(this.listUsers);
+    });
 
-      this.dataUserListSubscription = this.addUserlistService.getListUserData(this.listUsers[0].userId).subscribe(data => {
-        this.dataUserList = data;
-        console.log(this.dataUserList);
-        this.datauser = this.listUsers[0];
-
-      });
+    this.nameUserListSubscription = this.userService.getNameUser().subscribe(data => {
+      this.nameUser = data;
+      console.log(this.nameUser);
     });
 
 
@@ -85,14 +85,18 @@ export class ProductDetailsPage implements OnInit {
 
   async addUserList() {
     await this.presentLoading();
+    this.showAdd = false;
+    this.showDelete = true;
 
     try {
+      this.userData.userUid = this.authService.getAuth().currentUser.uid;
+      this.DadosUser =
+        ({
+          userUid: this.userData.userUid,
+          nameUser: this.nameUser[0].nome
+        });
 
-      this.userData.userId = this.authService.getAuth().currentUser.uid;
-      this.nameUser = this.userService.getNameUser();
-      console.log(this.nameUser);
-
-      await this.addUserlistService.insertNameList(this.userData,this.nameUser ,this.productId);
+      await this.addUserlistService.insertNameList(this.productId, this.DadosUser);
       this.loading.dismiss();
     } catch (error) {
       console.log(error);

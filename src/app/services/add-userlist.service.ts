@@ -2,10 +2,8 @@ import { UserList } from './../interfaces/userlist';
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Product } from '../interfaces/product';
-import { ProductService } from './product.service';
-import { Subscription } from 'rxjs';
-import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
+
 
 
 
@@ -15,18 +13,20 @@ import { map } from 'rxjs/operators';
 })
 export class AddUserlistService {
   private productsCollection: AngularFirestoreCollection<Product>;
-  public usuario: any;
+  
   public product: Product = {};
+  public userlist: UserList = {};
   
 
-  constructor(private afs: AngularFirestore,
-    private authService: AuthService,) {
+  constructor(private afs: AngularFirestore) {
       this.productsCollection = this.afs.collection<Product>('Products');
-      this.usuario = this.authService.getAuth().currentUser.uid;
+  
   }
 
-  insertNameList(userUId: Product, nameUser: Product ,produto: Product) {
-    return this.afs.doc('Products/' + produto).collection<any>('userlist').add({id: userUId, name: nameUser});
+  insertNameList(userProduto: string, userUid:UserList) {
+
+    return this.productsCollection.doc<Product>(userProduto).collection<UserList>('userlist').add(userUid);
+  
 
   }
 

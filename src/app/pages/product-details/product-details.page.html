@@ -67,10 +67,18 @@
     </ion-item>
   </ion-card>
 
-  <ion-item>
+  <ion-item *ngIf="showAdd">
     <ion-chip class="confirm" outline color="primary">
       <ion-button fill="clear" (click)="addUserList()">
         <ion-label>Confirme sua presença</ion-label>
+      </ion-button>
+    </ion-chip>
+  </ion-item>
+
+  <ion-item *ngIf="showDelete">
+    <ion-chip class="confirm" outline color="danger">
+      <ion-button fill="clear" (click)="deleteUserList()">
+        <ion-label>Cancelar presença</ion-label>
       </ion-button>
     </ion-chip>
   </ion-item>
@@ -81,12 +89,12 @@
       Presença confirmada
     </ion-list-header>
 
-    <ion-item >
+    <ion-item *ngFor="let listUser of listUsers">
       <ion-avatar slot="start">
         <img src="/assets/img/img_avatar.png">
       </ion-avatar>
       <ion-label>
-        <h2></h2>
+        <h2>{{listUser.nameUser}}</h2>
 
       </ion-label>
     </ion-item>
