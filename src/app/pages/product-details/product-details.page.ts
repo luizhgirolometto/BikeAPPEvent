@@ -51,11 +51,14 @@ export class ProductDetailsPage implements OnInit {
   ) {
 
     this.productId = this.activatedRoute.snapshot.params['id'];
-
     if (this.productId) this.loadProduct();
+
+    
+   
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   ngOnDestroy() {
     if (this.productSubscription) this.productSubscription.unsubscribe();
@@ -63,30 +66,52 @@ export class ProductDetailsPage implements OnInit {
     if (this.nameUserListSubscription) this.nameUserListSubscription.unsubscribe();
   }
 
-  loadProduct() {
-
+ async loadProduct() {
+    //traz todos os products / eventos
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
       console.log(this.product);
     });
-
-    this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
+  //traz a array de usuarios 
+     this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
       this.listUsers = data;
       console.log(this.listUsers);
+      
+       // valida se o usuario esta na lista e verifica e habilita o botão de cancelar presença
+     let array = this.listUsers;
+     let user = this.authService.getAuth().currentUser.uid;
+
+     console.log(array);
+
+     for (let i = 0; i < array.length; i++) {
+       if (array.userUid = user) {
+         console.log( array[i] );
+         console.log("caiu aqui");
+         this.showDelete = true;
+         this.showAdd = false;
+         }
+       else {
+         console.log("caiu no else")
+         this.showAdd = true;
+       }
+     }
+
+
     });
 
-    this.nameUserListSubscription = this.userService.getNameUser().subscribe(data => {
+    // traz os dados do usuario
+     this.nameUserListSubscription = this.userService.getNameUser().subscribe(data => {
       this.nameUser = data;
-      console.log(this.nameUser);
+
+     
     });
-
-
   }
 
+  //adiciona o nome do usuario na lista 
   async addUserList() {
     await this.presentLoading();
-    this.showAdd = false;
-    this.showDelete = true;
+
+
 
     try {
       this.userData.userUid = this.authService.getAuth().currentUser.uid;
