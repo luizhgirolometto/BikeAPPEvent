@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { Cities } from 'src/app/interfaces/cities';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AddUserlistService } from 'src/app/services/add-userlist.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-product-details',
@@ -54,7 +54,6 @@ export class ProductDetailsPage implements OnInit {
     if (this.productId) this.loadProduct();
 
     
-   
   }
 
   ngOnInit() {
@@ -80,8 +79,6 @@ export class ProductDetailsPage implements OnInit {
        // valida se o usuario esta na lista e verifica e habilita o botão de cancelar presença
      let array = this.listUsers;
      let user = this.authService.getAuth().currentUser.uid;
-
-     console.log(array);
 
      for (let i = 0; i < array.length; i++) {
        if (array.userUid = user) {
