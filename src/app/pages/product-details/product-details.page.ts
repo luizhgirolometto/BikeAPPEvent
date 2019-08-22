@@ -1,5 +1,5 @@
 import { UserService } from './../../services/user.service';
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
@@ -53,7 +53,7 @@ export class ProductDetailsPage implements OnInit {
     this.productId = this.activatedRoute.snapshot.params['id'];
     if (this.productId) this.loadProduct();
 
-    
+
   }
 
   ngOnInit() {
@@ -65,42 +65,39 @@ export class ProductDetailsPage implements OnInit {
     if (this.nameUserListSubscription) this.nameUserListSubscription.unsubscribe();
   }
 
- async loadProduct() {
+  async loadProduct() {
     //traz todos os products / eventos
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
-      console.log(this.product);
-    });
-  //traz a array de usuarios 
-     this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
-      this.listUsers = data;
-      console.log(this.listUsers);
-      
-       // valida se o usuario esta na lista e verifica e habilita o botão de cancelar presença
-     let array = this.listUsers;
-     let user = this.authService.getAuth().currentUser.uid;
 
-     for (let i = 0; i < array.length; i++) {
-       if (array.userUid = user) {
-         console.log( array[i] );
-         console.log("caiu aqui");
-         this.showDelete = true;
-         this.showAdd = false;
-         }
-       else {
-         console.log("caiu no else")
-         this.showAdd = true;
-       }
-     }
+    });
+    //traz a array de usuarios 
+    this.userListSubscription = this.addUserlistService.getEventUserList(this.productId).subscribe(data => {
+      this.listUsers = data;
+
+      // valida se o usuario esta na lista e verifica e habilita o botão de cancelar presença
+      let array = this.listUsers;
+      let user = this.authService.getAuth().currentUser.uid;
+
+      for (let i = 0; i < array.length; i++) {
+        if (array.userUid = user) {
+          this.showDelete = true;
+          this.showAdd = false;
+        }
+        else {
+
+          this.showAdd = true;
+        }
+      }
 
 
     });
 
     // traz os dados do usuario
-     this.nameUserListSubscription = this.userService.getNameUser().subscribe(data => {
+    this.nameUserListSubscription = this.userService.getNameUser().subscribe(data => {
       this.nameUser = data;
 
-     
+
     });
   }
 
