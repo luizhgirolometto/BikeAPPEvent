@@ -4,27 +4,8 @@
     src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
     }
     
-
-    ion-card{
-        ion-item{
-            --background:#066673;
-            color: var(--ion-color-light);
-        }
-    }
-
-    ion-item{
-        ion-chip{
-            margin: auto auto;
-        }
+    ion-content {
+        margin-top: 0px;
+        --background: url('/assets/img/background.jpg') no-repeat 50% 50%;
         
     }
-
-    ion-list{
-        align-items: center;
-        ion-list-header{
-            margin: auto;
-           
-        }
-    }
-
-  
