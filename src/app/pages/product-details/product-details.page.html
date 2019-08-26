@@ -83,9 +83,9 @@
           <ion-col>
             <ion-card>
               <ion-item lines="none">
-                <ion-label>
-                  <p>{{product.description}}</p>
-                </ion-label>
+                  <ion-card-content>
+                      <p>{{product.description}}</p>
+                    </ion-card-content>
               </ion-item>
             </ion-card>
           </ion-col>
@@ -112,8 +112,7 @@
   <ion-button expand="full" (click)="addUserList()" *ngIf="showAdd" color="primary">
     <ion-label>Confirme sua presença</ion-label>
   </ion-button>
-  <ion-button expand="full" (click)="deleteUserList()" *ngIf="showDelete" color="danger"> 
-         <ion-label>Cancelar presença</ion-label>
-    </ion-button>
+  <ion-button expand="full" (click)="deleteUserList()" *ngIf="showDelete" color="danger">
+    <ion-label>Cancelar presença</ion-label>
+  </ion-button>
 </ion-footer>
-
