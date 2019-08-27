@@ -1,9 +1,4 @@
-@font-face {
-    font-family:OpenSans-Semibold;
-    font-style: semiBold;        
-    src: url("../../../assets/fonts/OpenSans/OpenSans-SemiBold/OpenSans-SemiBold.ttf");
-    }
-    
+
     ion-content {
 
 
@@ -11,10 +6,10 @@
       
 
        ion-img{
-            padding-top: 5px;
-            margin: auto auto;
-            width: 50px;
-            height: 50px;
+            padding-top: 2px;
+            width: 40px;
+            height: 40px;
+            --border-radius: 50%;
             
         }
 
@@ -24,9 +19,15 @@
             }
 
                 ion-row{
-                    margin-top: -25px;
+                    margin-top: -10px;
                     margin-bottom: 0px;
                 }
 
      }
+
+     
+}
+
+ion-toolbar {
+    --background:#0890a2;
 }
