@@ -1,4 +1,73 @@
+@font-face {
+  font-family: 'Roboto-Thin';
+  src:  url('../../../assets/fonts/Roboto/Roboto-Thin.ttf');
+  
+//   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src:  url('../../../assets/fonts/Roboto/Roboto-Regular.ttf');
+  
+//   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-ThinItalic';
+  src:  url('../../../assets/fonts/Roboto/Roboto-ThinItalic.ttf');
+  
+//   font-style: normal;
+}
 
 ion-icon {
     font-size: 64px;
   }
+
+  .avatar{
+     padding-bottom: -20px;
+    ion-avatar{
+      margin: auto auto;
+      
+    }
+
+  }
+
+  h4 {
+    font-family: 'Roboto-ThinItalic';
+    font-size: 1em;
+    
+}
+     
+  .nome {
+    --min-height:1px;
+    
+    ion-label {
+      margin: auto auto;
+    }
+
+      h6 {
+        text-align: center;
+        font-family: 'Roboto-Regular';
+        font-size: 0.5em;
+      }
+}
+
+.cidade{
+  --min-height:1px;
+
+       ion-label {
+          margin: auto auto;
+         }
+
+         h6 {
+          text-align: center;
+          font-family: 'Roboto-Thin';
+          font-size: 0.7em;
+        }
+}
+
+
+.conteudo{
+    margin-top: 10px;
+
+}

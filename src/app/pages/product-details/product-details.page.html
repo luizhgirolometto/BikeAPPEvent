@@ -15,23 +15,80 @@
 <ion-content color="medium">
   <ion-grid>
     <ion-row>
-      <ion-col size="8">
-        {{product.description}}
+      <ion-col size="7">
+        <ion-label text-wrap>
+          <h4>{{product.description}}</h4>
+        </ion-label>
+
       </ion-col>
-      <ion-col size="4">
-        <ion-item color="medium" lines="none">
+      <ion-col size="5">
+        <ion-item class="avatar" color="medium" lines="none">
           <ion-avatar>
             <img src="assets/img/biker.png">
           </ion-avatar>
         </ion-item>
-        <ion-item color="medium" lines="none">
-            <ion-label>
-              {{product.nameUser}}
-            </ion-label>
-          </ion-item>
+        <ion-item class="nome" color="medium" lines="none">
+          <ion-label>
+            <h6>{{product.nameUser}}</h6>
+          </ion-label>
+        </ion-item>
+        <ion-item class="cidade" color="medium" lines="none">
+          <ion-label>
+            <h6>{{product.cities}}</h6>
+          </ion-label>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+<div class="conteudo">
+  
+  
+  <ion-list >
+
+    <ion-item color="medium">
+      <ion-avatar slot="end">
+        <img src="assets/img/pin.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Data / Hora</h2>
+        <h3>{{ product.dtEvent | date: 'dd/MM/yy'  }}</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item color="medium">
+      <ion-avatar slot="end">
+        <img src="./avatar-han.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Han</h2>
+        <h3>Look, kid...</h3>
+    
+      </ion-label>
+    </ion-item>
+
+    <ion-item color="medium">
+      <ion-avatar slot="end">
+        <img src="./avatar-rey.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Rey</h2>
+        <h3>I can handle myself</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item color="medium">
+      <ion-avatar slot="end">
+        <img src="./avatar-luke.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Luke</h2>
+        <h3>Your thoughts betray you</h3>
+        </ion-label>
+    </ion-item>
+  </ion-list>
+
+</div>
 </ion-content>
 
 
