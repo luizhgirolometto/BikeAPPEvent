@@ -19,6 +19,14 @@
 //   font-style: normal;
 }
 
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src:  url('../../../assets/fonts/Roboto/Roboto-Medium.ttf');
+  
+//   font-style: normal;
+}
+
 ion-icon {
     font-size: 64px;
   }
@@ -69,5 +77,14 @@ ion-icon {
 
 .conteudo{
     margin-top: 10px;
+
+}
+
+h2{
+  font-family: 'Roboto-Medium';
+
+}
+h3{
+  font-family: 'Roboto-ThinItalic';
 
 }
