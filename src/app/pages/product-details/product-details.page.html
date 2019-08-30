@@ -41,54 +41,60 @@
     </ion-row>
   </ion-grid>
 
-<div class="conteudo">
-  
-  
-  <ion-list >
-
-    <ion-item color="medium">
-      <ion-avatar slot="end">
-        <img src="assets/img/circular-clock.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Data / Hora</h2>
-        <h3>{{ product.dtEvent | date: 'dd/MM/yy'  }}</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item color="medium">
-      <ion-avatar slot="end">
-        <img src="assets/img/pin.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Distância</h2>
-        <h3>{{product.distance}}Km</h3>
-    
-      </ion-label>
-    </ion-item>
-
-    <ion-item color="medium">
-      <ion-avatar slot="end">
-        <img src="assets/img/bike.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Modalidade</h2>
-        <h3>{{product.modalidade}}</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item color="medium">
-      <ion-avatar slot="end">
-        <img src="assets/img/smartwatch.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Nível</h2>
-        <h3>{{product.nivel}}</h3>
+  <div class="conteudo">
+    <ion-list>
+      <ion-item color="medium">
+        <ion-avatar slot="end">
+          <img src="assets/img/circular-clock.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Data / Hora</h2>
+          <h3>{{ product.dtEvent | date: 'dd/MM/yy'  }}</h3>
         </ion-label>
-    </ion-item>
-  </ion-list>
+      </ion-item>
 
-</div>
+      <ion-item color="medium">
+        <ion-avatar slot="end">
+          <img src="assets/img/pin.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Distância</h2>
+          <h3>{{product.distance}}Km</h3>
+
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="medium">
+        <ion-avatar slot="end">
+          <img src="assets/img/bike.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Modalidade</h2>
+          <h3>{{product.modalidade}}</h3>
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="medium">
+        <ion-avatar slot="end">
+          <img src="assets/img/smartwatch.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Nível</h2>
+          <h3>{{product.nivel}}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+ 
+    <ion-button class="btnAddUser" slot="start" shape="round" size="small" fill="outline" (click)="addUserList()" *ngIf="showAdd"> <ion-icon slot="start" name="person" size="small"></ion-icon>
+      <ion-label>Confirme sua presença</ion-label>
+    </ion-button>
+    <ion-button shape="round" size="small" fill="outline" (click)="deleteUserList()" *ngIf="showDelete" color="danger" slot="end">
+      <ion-label>Cancelar presença</ion-label>
+    </ion-button>
+  </div>
 </ion-content>
 
 
