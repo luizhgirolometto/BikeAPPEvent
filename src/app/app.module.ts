@@ -14,7 +14,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt-PT';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { SearchFilterPageModule } from './modal/search-filter/search-filter.module';
+import { UserlistPageModule } from './modal/userlist/userlist.module';
+
 
 registerLocaleData(localePt, 'pt-PT');
 
@@ -32,8 +33,7 @@ registerLocaleData(localePt, 'pt-PT');
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    SearchFilterPageModule
-  ],
+    UserlistPageModule  ],
   providers: [
     StatusBar,
     SplashScreen,

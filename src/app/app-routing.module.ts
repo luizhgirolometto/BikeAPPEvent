@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoggedGuard] },
   { path: 'details', loadChildren: './pages/details/details.module#DetailsPageModule', canActivate: [AuthGuard] },
   { path: 'details/:id', loadChildren: './pages/details/details.module#DetailsPageModule', canActivate: [AuthGuard] },
-  { path: 'product-details/:id', loadChildren: './pages/product-details/product-details.module#ProductDetailsPageModule', canActivate: [AuthGuard] }
+  { path: 'product-details/:id', loadChildren: './pages/product-details/product-details.module#ProductDetailsPageModule', canActivate: [AuthGuard] },  { path: 'userlist', loadChildren: './modal/userlist/userlist.module#UserlistPageModule' }
+
   
 
 ];

@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
 
-import { SearchFilterPage } from '../../modal/search-filter/search-filter.page';
+
 
 
 
@@ -86,12 +86,7 @@ export class HomePage implements OnInit {
     toast.present();
   }
 
-  async searchFilter() {
-    const modal = await this.modalCtrl.create({
-      component: SearchFilterPage
-    });
-    return await modal.present();
-  }
+ 
 
   async buscarUsuario(event) {
 

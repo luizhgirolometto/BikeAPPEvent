@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="closeModal()">
+        <ion-icon name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Lista de presença
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let listUser of listUsers">
+      <ion-avatar slot="start">
+        <img src="/assets/img/biker.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{listUser.nameUser}}</h2>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-button expand="full" fill="outline" (click)="addUserList()" *ngIf="showAdd">
+    <ion-label>Confirme sua presença</ion-label>
+  </ion-button>
+  <ion-button expand="full" fill="outline" (click)="deleteUserList()" *ngIf="showDelete" color="danger">
+    <ion-label>Cancelar presença</ion-label>
+  </ion-button>
+
+</ion-footer>

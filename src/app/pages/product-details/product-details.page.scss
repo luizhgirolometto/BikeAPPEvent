@@ -32,9 +32,10 @@ ion-icon {
   }
 
   .avatar{
-     padding-bottom: -20px;
+   margin: auto auto;
     ion-avatar{
-      margin: auto auto;
+      width: 80px;
+      height: 60px;
       
     }
 
@@ -45,33 +46,30 @@ ion-icon {
     font-size: 1em;
     
 }
-     
+  .ColunaNome{
+    align-self: flex-start;
+
+  }
   .nome {
     --min-height:1px;
+    --border-color: #F00;
     
-    ion-label {
-      margin: auto auto;
-    }
-
-      h6 {
-        text-align: center;
+   
+    h6 {
+        text-align: left;
         font-family: 'Roboto-Regular';
-        font-size: 0.5em;
+        font-size: 0.8em;
       }
 }
 
-.cidade{
-  --min-height:1px;
-
-       ion-label {
-          margin: auto auto;
-         }
-
-         h6 {
-          text-align: center;
-          font-family: 'Roboto-Thin';
-          font-size: 0.7em;
-        }
+  .cidade{
+    padding-top: -40px;
+      
+          h6 {
+            text-align: left;
+            font-family: 'Roboto-Thin';
+            font-size: 0.7em;
+          }
 }
 
 
@@ -88,8 +86,19 @@ h3{
   font-family: 'Roboto-ThinItalic';
 
 }
+.btns{
+  margin: auto auto auto;
+
+}
 
 .btnAddUser{
   --color:white;
   --border-color:white;
+  --ripple-color: orange;
+  
+}
+
+.descricao{
+  margin-top:-22px;
+  padding-left: 6px;
 }
