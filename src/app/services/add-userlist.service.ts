@@ -48,6 +48,12 @@ export class AddUserlistService {
     );
   }
 
+  deleteUserEvent(id: string, userUid: string){
+
+    return this.productsCollection.doc<Product>(id).collection('userlist').doc(userUid).delete();
+
+  }
+
 
 
 }
